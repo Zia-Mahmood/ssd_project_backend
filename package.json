@@ -1,0 +1,23 @@
+{
+  "name": "ssd_project_backend",
+  "version": "1.0.0",
+  "description": "SSD Project Backend",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Zia-Mahmood/ssd_project_backend.git"
+  },
+  "author": "Zia, Supraja, Kritika, Pooja",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Zia-Mahmood/ssd_project_backend/issues"
+  },
+  "homepage": "https://github.com/Zia-Mahmood/ssd_project_backend#readme",
+  "dependencies": {
+    "express": "^4.21.1",
+    "mongoose": "^8.7.2"
+  }
+}
