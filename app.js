@@ -14,7 +14,9 @@ const port = process.env.PORT || 6001
 dotenv.config({ path: './config.env' });
 
 
-mongoose.connect(process.env.DATABASE_CONNECTION_STRING).then(() => console.log("Connection to MongoDB successfull...")).catch((err) => console.log("Unable to connect to MongoDB...", err));
+mongoose.connect(process.env.DATABASE_CONNECTION_STRING)
+    .then(() => console.log("Connection to MongoDB successfull..."))
+    .catch((err) => console.log("Unable to connect to MongoDB...", err));
 
 
 const mongoDBstore = new MongoDBStore({
@@ -32,10 +34,10 @@ const MAX_AGE = 1000 * 60 * 30; // 30 minutes
 app.use(
     session({
         secret: 'DUB_NATION',
-        name: 'session-id', 
+        name: 'session-id',
         store: mongoDBstore,
         cookie: {
-            maxAge: MAX_AGE, 
+            maxAge: MAX_AGE,
             secure: false, // Only set to true in production
         },
         rolling: true, // Reset session maxAge on each request
