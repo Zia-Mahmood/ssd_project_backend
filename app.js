@@ -26,10 +26,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 async function connectToMongoDB() {
   try {
-    await mongoose.connect(uri, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    await mongoose.connect(uri);
 
     console.log("Connected to MongoDB!");
 
