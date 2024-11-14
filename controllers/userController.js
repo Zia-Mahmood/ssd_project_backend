@@ -31,29 +31,42 @@ const addUser = async (req, res) => {
 
 const login = async (req, res) => {
     console.log(req.body);
-    const { username, password, lastLogin } = req.body
-
-    if (!username || !password || !lastLogin) {
+    const { email, password } = req.body
+    let lastLogin = new Date();
+    console.log(lastLogin);
+    if (!email || !password || !lastLogin) {
         res.status(400).json({ msg: 'Something missing' })
     }
+    try {
+        const user = await Users.findOne({ email }); // finding user in db
+        if (!user) {
+            return res.status(400).json({ msg: 'User not found' });
+        }
+        console.log(user);
 
-    const user = await Users.findOne({ name: username }) // finding user in db
-    if (!user) {
-        return res.status(400).json({ msg: 'User not found' })
-    }
-    console.log(user);
-    // comparing the password with the saved hash-password
-    const matchPassword = await bcrypt.compare(password, user.password)
-    console.log(matchPassword);
-    if (matchPassword) {
-        const userSession = { name: user.username } // creating user session to keep user loggedin also on refresh
-        req.session.user = userSession // attach user session to session object from express-session
-        req.session.save();
-        return res
-            .status(200)
-            .json({ msg: 'You have logged in successfully', userSession }) // attach user session id to the response. It will be transfer in the cookies
-    } else {
-        return res.status(400).json({ msg: 'Invalid credential' })
+        // comparing the password with the saved hash-password
+        const matchPassword = await bcrypt.compare(password, user.passwordHash);
+        console.log(matchPassword);
+
+        if (matchPassword) {
+            // Update lastLogin
+            await Users.updateOne({ email }, { lastLogin });
+            console.log("Last login time updated");
+
+            // Creating user session to keep user logged in also on refresh
+            const userSession = { name: user.email };
+            req.session.user = userSession; // attach user session to session object from express-session
+            req.session.save();
+
+            return res
+                .status(200)
+                .json({ msg: 'You have logged in successfully', userSession });
+        } else {
+            return res.status(400).json({ msg: 'Invalid credentials' });
+        }
+    } catch (error) {
+        console.error("Login error:", error);
+        return res.status(500).json({ msg: 'Server error' });
     }
 }
 

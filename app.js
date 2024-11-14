@@ -6,7 +6,7 @@ const MongoDBStore = require("connect-mongodb-session")(session);
 const cors = require("cors");
 const bodyParser = require("body-parser");
 
-const userRoutes = require("./routes/userRoutes");
+const userRoutes = require("./routes/userRoutes.js");
 
 const app = express();
 const port = process.env.PORT || 6001;
@@ -46,7 +46,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // SESSIONS HANDLER
-const MAX_AGE = 1000 * 60 * 30; // 30 minutes
+const MAX_AGE = 1000 * 60 * 3; // 30 minutes
 app.use(
   session({
     secret: "DUB_NATION",
