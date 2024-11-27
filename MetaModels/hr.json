@@ -1,0 +1,420 @@
+{
+  "department": "Human Resources",
+  "conversationFlow": {
+    "initiate": {
+      "prompt": "What type of HR report or service are you looking for?",
+      "errorHandling": "Please ensure you are selecting the correct HR-related option."
+    },
+    "reportType": {
+      "description": "Ask the user to specify the type of HR-related report or request.",
+      "question": "What kind of HR service or report would you like? Options include Employee Report, Recruitment Summary, Payroll Report, etc.",
+      "validations": {
+        "required": true,
+        "options": [
+          "Employee Report",
+          "Recruitment Summary",
+          "Payroll Report",
+          "Attendance Report",
+          "Performance Evaluation Report",
+          "Training and Development Report",
+          "Employee Engagement Report",
+          "Diversity and Inclusion Report",
+          "Attrition Report",
+          "Leave Report",
+          "Compliance Report"
+        ],
+        "option_details": [
+          {
+            "name": "Employee Report",
+            "description": "Provides an overview of employee details such as demographics, positions, and tenure.",
+            "required_fields": [
+              "Employee ID",
+              "Name",
+              "Designation",
+              "Department"
+            ],
+            "optional_fields": [
+              "Joining Date",
+              "Contact Information",
+              "Employment Type",
+              "Manager"
+            ],
+            "metrics": [
+              "Total Employees",
+              "New Hires",
+              "Employees by Department"
+            ]
+          },
+          {
+            "name": "Recruitment Summary",
+            "description": "Summarizes the recruitment activities, including vacancies, applications, and hiring status.",
+            "required_fields": [
+              "Vacancies",
+              "Applications Received",
+              "Positions Filled"
+            ],
+            "optional_fields": [
+              "Average Time to Hire",
+              "Hiring Source",
+              "Recruitment Cost"
+            ],
+            "metrics": [
+              "Vacancy Fill Rate",
+              "Applications per Position",
+              "Time to Hire"
+            ]
+          },
+          {
+            "name": "Payroll Report",
+            "description": "Provides details of salaries, bonuses, deductions, and other payroll components.",
+            "required_fields": [
+              "Employee ID",
+              "Basic Salary",
+              "Bonuses",
+              "Deductions"
+            ],
+            "optional_fields": ["Overtime Pay", "Tax Deductions", "Net Salary"],
+            "metrics": [
+              "Total Payroll Cost",
+              "Average Salary",
+              "Overtime Expenses"
+            ]
+          },
+          {
+            "name": "Attendance Report",
+            "description": "Tracks employee attendance, including absences, tardiness, and working hours.",
+            "required_fields": [
+              "Employee ID",
+              "Date",
+              "Hours Worked",
+              "Absent Days"
+            ],
+            "optional_fields": [
+              "Overtime Hours",
+              "Late Entries",
+              "Leave Balances"
+            ],
+            "metrics": [
+              "Attendance Rate",
+              "Overtime Hours",
+              "Average Working Hours"
+            ]
+          },
+          {
+            "name": "Performance Evaluation Report",
+            "description": "Evaluates employee performance based on specific KPIs and manager feedback.",
+            "required_fields": [
+              "Employee ID",
+              "Performance Score",
+              "KPI Metrics",
+              "Review Period"
+            ],
+            "optional_fields": [
+              "Manager Feedback",
+              "Promotion Status",
+              "Performance Improvement Plan"
+            ],
+            "metrics": [
+              "Average Performance Score",
+              "High Performers",
+              "Promotion Rate"
+            ]
+          },
+          {
+            "name": "Training and Development Report",
+            "description": "Summarizes the training programs and employee participation.",
+            "required_fields": [
+              "Training Program",
+              "Participants",
+              "Completion Rate",
+              "Training Date"
+            ],
+            "optional_fields": [
+              "Trainer Name",
+              "Feedback Score",
+              "Certification Status"
+            ],
+            "metrics": [
+              "Training Hours Completed",
+              "Completion Rate",
+              "Average Feedback Score"
+            ]
+          },
+          {
+            "name": "Employee Engagement Report",
+            "description": "Analyzes employee satisfaction and engagement levels.",
+            "required_fields": [
+              "Survey Score",
+              "Participation Rate",
+              "Engagement Metrics"
+            ],
+            "optional_fields": [
+              "Department-wise Analysis",
+              "Employee Feedback",
+              "Improvement Areas"
+            ],
+            "metrics": [
+              "Engagement Score",
+              "Participation Rate",
+              "Top Engagement Drivers"
+            ]
+          },
+          {
+            "name": "Diversity and Inclusion Report",
+            "description": "Tracks diversity metrics and inclusion initiatives.",
+            "required_fields": [
+              "Gender Ratio",
+              "Ethnic Diversity",
+              "Inclusion Programs"
+            ],
+            "optional_fields": [
+              "Disability Representation",
+              "LGBTQ+ Inclusion Metrics"
+            ],
+            "metrics": [
+              "Diversity Index",
+              "Inclusion Program Participation",
+              "Employee Satisfaction"
+            ]
+          },
+          {
+            "name": "Attrition Report",
+            "description": "Details employee exits, reasons for leaving, and retention metrics.",
+            "required_fields": [
+              "Employee ID",
+              "Exit Date",
+              "Reason for Leaving"
+            ],
+            "optional_fields": [
+              "Exit Interview Feedback",
+              "Notice Period",
+              "Replacement Status"
+            ],
+            "metrics": ["Attrition Rate", "Retention Rate", "Average Tenure"]
+          },
+          {
+            "name": "Leave Report",
+            "description": "Provides insights into employee leaves and leave balances.",
+            "required_fields": [
+              "Employee ID",
+              "Leave Type",
+              "Leave Date",
+              "Balance"
+            ],
+            "optional_fields": [
+              "Sick Leaves",
+              "Vacation Leaves",
+              "Unpaid Leaves"
+            ],
+            "metrics": [
+              "Average Leaves Taken",
+              "Leave Balance",
+              "Leave Usage Rate"
+            ]
+          },
+          {
+            "name": "Compliance Report",
+            "description": "Ensures adherence to company policies and labor laws.",
+            "required_fields": [
+              "Compliance Area",
+              "Audit Findings",
+              "Compliance Date"
+            ],
+            "optional_fields": ["Risk Assessment", "Remediation Plan"],
+            "metrics": [
+              "Compliance Score",
+              "Number of Issues",
+              "Remediation Rate"
+            ]
+          }
+        ],
+        "errorMessage": "Please select a valid HR report or service from the available options."
+      },
+      "responseValidation": "Ensure that the selected report is relevant to the HR Department."
+    },
+    "timePeriod": {
+      "description": "Ask for the reporting period",
+      "question": "For what time period do you need the report? Options include Daily, Weekly, Monthly, etc.",
+      "validations": {
+        "required": true,
+        "options": [
+          "Daily",
+          "Weekly",
+          "Monthly",
+          "Quarterly",
+          "Yearly",
+          "Custom Date Range"
+        ],
+        "customDateRangeHandling": "If 'Custom Date Range' is selected, ask for the start and end dates."
+      },
+      "responseValidation": "Check if the selected time period matches the requested report type."
+    },
+    "metrics": {
+      "description": "Ask the user which key HR metrics they would like to include",
+      "question": "Which HR metrics should be included in the report? Common metrics include Employee Turnover Rate, Time to Fill, and Employee Satisfaction Score.",
+      "validations": {
+        "required": true,
+        "options": [
+          "Employee Turnover Rate",
+          "Time to Fill",
+          "Employee Satisfaction Score",
+          "Average Time to Hire",
+          "Training Completion Rate",
+          "Diversity Hiring Rate",
+          "Absenteeism Rate",
+          "Retention Rate",
+          "Performance Improvement Rate",
+          "Employee Engagement Score",
+          "Offer Acceptance Rate",
+          "Cost per Hire",
+          "Payroll Expense Ratio"
+        ],
+        "errorMessage": "Please select at least one metric."
+      },
+      "responseValidation": "Verify that the selected metrics are relevant for the chosen HR report type."
+    },
+
+    "visualization": {
+      "description": "Inquire about the visualization preference",
+      "question": "How would you like the data to be visualized? Bar chart, Pie chart, Line graph, or Table?",
+      "validations": {
+        "required": true,
+        "options": [
+          {
+            "name": "Bar Chart",
+            "description": "A chart that displays categorical data with rectangular bars.",
+            "subtypes": [
+              {
+                "type": "Vertical Bar",
+                "description": "Displays data in vertical bars to compare different categories."
+              },
+              {
+                "type": "Horizontal Bar",
+                "description": "Displays data in horizontal bars for comparative analysis."
+              },
+              {
+                "type": "Stacked Bar",
+                "description": "Displays the total of different sub-categories in a stacked format."
+              }
+            ],
+            "details": {
+              "2D_3D": ["2D", "3D"],
+              "colors": "Single or Multi-color options",
+              "animations": ["Static", "Animated"]
+            }
+          },
+          {
+            "name": "Pie Chart",
+            "description": "A circular chart divided into slices to illustrate numerical proportions.",
+            "subtypes": [
+              {
+                "type": "Standard Pie",
+                "description": "Displays proportional data as slices of a pie."
+              },
+              {
+                "type": "3D Pie",
+                "description": "Adds depth to the slices to create a 3D effect."
+              },
+              {
+                "type": "Donut Pie",
+                "description": "Similar to a pie chart but with a hole in the center."
+              }
+            ],
+            "details": {
+              "labels": ["Percentage", "Absolute Values"],
+              "interactivity": ["Drill Down", "Hover"],
+              "colors": "Single or Multi-color slices"
+            }
+          },
+          {
+            "name": "Line Graph",
+            "description": "Displays data points connected by a line, often used for trends over time.",
+            "subtypes": [
+              {
+                "type": "Standard Line",
+                "description": "Connects data points with straight lines."
+              },
+              {
+                "type": "Curved Line",
+                "description": "Connects data points with smooth, curved lines."
+              },
+              {
+                "type": "Area Line",
+                "description": "Fills the area beneath the line for cumulative data."
+              }
+            ],
+            "details": {
+              "2D_3D": ["2D", "3D"],
+              "trendline_options": ["Linear", "Moving Average"],
+              "markers": ["Points", "No Points"],
+              "animations": ["Static", "Animated"]
+            }
+          },
+          {
+            "name": "Scatter Plot",
+            "description": "A graph with points plotted to represent values for two variables.",
+            "subtypes": [
+              {
+                "type": "Standard Scatter",
+                "description": "Simple scatter plot with points representing two variables."
+              },
+              {
+                "type": "Bubble Chart",
+                "description": "Similar to scatter plot but adds size to the points to represent a third variable."
+              }
+            ],
+            "details": {
+              "axis_labels": ["X-Axis", "Y-Axis"],
+              "colors": "Single or Multi-color points",
+              "bubble_size": "Represents additional variable"
+            }
+          },
+          {
+            "name": "Heatmap",
+            "description": "A matrix representation where values are represented by color gradients.",
+            "subtypes": [
+              {
+                "type": "Standard Heatmap",
+                "description": "Displays data values with color intensity."
+              },
+              {
+                "type": "Clustered Heatmap",
+                "description": "Groups similar values into clusters."
+              }
+            ],
+            "details": {
+              "color_range": ["Low to High", "High to Low"],
+              "interactivity": ["Drill Down", "Hover"],
+              "grid_size": "Adjustable grid resolution"
+            }
+          }
+        ],
+        "errorMessage": "Please choose a valid visualization type."
+      },
+      "responseValidation": "Make sure the selected visualization is applicable to the report data."
+    },
+    "validationRules": {
+      "general": {
+        "rules": [
+          "Ensure that responses align with the Finance and Accounting department's domain and the report type requested."
+        ]
+      },
+      "errorHandling": {
+        "prompts": {
+          "invalidInput": "Your input doesn't seem relevant to Finance and Accounting. Could you please provide a valid response?",
+          "retryPrompt": "Can you clarify your request? Let's ensure the report meets your needs."
+        }
+      }
+    },
+    "summary_format": {
+      "language": "Plain English",
+      "key_points": [
+        "Report Type",
+        "Visualization Type",
+        "Date Range",
+        "Metrics",
+        "Additional Comments"
+      ]
+    }
+  }
+}

@@ -1,0 +1,368 @@
+{
+  "department": "Product Development",
+  "conversationFlow": {
+    "initiate": {
+      "prompt": "What type of product development report would you like to generate?",
+      "errorHandling": "Ensure your selection aligns with product development reporting requirements."
+    },
+    "reportType": {
+      "description": "Ask the user to specify the type of product development report.",
+      "question": "What kind of report would you like? Options include Product Performance Review, Market Research Report, Development Status Update, etc.",
+      "validations": {
+        "required": true,
+        "options": [
+          "Product Performance Review",
+          "Market Research Report",
+          "Development Status Update",
+          "User Feedback Analysis Report",
+          "Feature Prioritization Report",
+          "Competitor Analysis Report",
+          "Product Launch Report",
+          "Product Roadmap Overview",
+          "Sales Performance Report",
+          "Customer Satisfaction Report"
+        ],
+        "option_details": [
+          {
+            "name": "Product Performance Review",
+            "description": "Evaluates the performance of a specific product over a defined period.",
+            "required_fields": [
+              "Product Name",
+              "Reporting Period",
+              "Sales Data",
+              "Market Share"
+            ],
+            "optional_fields": [
+              "Customer Feedback",
+              "Retention Rate",
+              "Cost of Goods Sold"
+            ],
+            "metrics": ["Total Revenue", "Units Sold", "Profit Margin"]
+          },
+          {
+            "name": "Market Research Report",
+            "description": "Analyzes market trends and consumer behavior relevant to product development.",
+            "required_fields": [
+              "Target Market",
+              "Research Methodology",
+              "Findings Overview"
+            ],
+            "optional_fields": [
+              "Competitor Insights",
+              "Market Size Estimation"
+            ],
+            "metrics": [
+              "Market Growth Rate",
+              "Customer Segmentation",
+              "Brand Awareness"
+            ]
+          },
+          {
+            "name": "Development Status Update",
+            "description": "Provides an update on the current status of ongoing product development projects.",
+            "required_fields": [
+              "Project Name",
+              "Current Phase",
+              "Timeline Overview",
+              "Resource Allocation"
+            ],
+            "optional_fields": ["Challenges Faced", "Mitigation Strategies"],
+            "metrics": [
+              "Project Completion Percentage",
+              "Budget Utilization",
+              "Time Overruns"
+            ]
+          },
+          {
+            "name": "User Feedback Analysis Report",
+            "description": "Summarizes user feedback and satisfaction levels for products.",
+            "required_fields": [
+              "Product Name",
+              "Feedback Collection Method",
+              "Key Insights"
+            ],
+            "optional_fields": ["Demographic Breakdown", "Common Themes"],
+            "metrics": [
+              "Net Promoter Score (NPS)",
+              "Customer Satisfaction Score (CSAT)",
+              "Feedback Volume"
+            ]
+          },
+          {
+            "name": "Feature Prioritization Report",
+            "description": "Ranks product features based on user needs and business impact.",
+            "required_fields": [
+              "Feature List",
+              "Evaluation Criteria",
+              "Stakeholder Input"
+            ],
+            "optional_fields": ["Cost Estimation", "Implementation Timeline"],
+            "metrics": [
+              "Customer Value Score",
+              "Development Effort Estimate",
+              "Return on Investment (ROI)"
+            ]
+          },
+          {
+            "name": "Competitor Analysis Report",
+            "description": "Analyzes competitor products and strategies in the market.",
+            "required_fields": [
+              "Competitor List",
+              "Comparison Metrics",
+              "Key Findings"
+            ],
+            "optional_fields": ["Market Positioning", "Pricing Strategies"],
+            "metrics": [
+              "Competitor Market Share",
+              "Product Features Comparison",
+              "Customer Ratings"
+            ]
+          },
+          {
+            "name": "Product Launch Report",
+            "description": "Details the outcomes and performance of a recent product launch.",
+            "required_fields": [
+              "Product Name",
+              "Launch Date",
+              "Initial Sales Data"
+            ],
+            "optional_fields": [
+              "Marketing Campaign Results",
+              "Customer Acquisition Cost"
+            ],
+            "metrics": [
+              "Launch Revenue",
+              "Market Penetration Rate",
+              "Sales Growth Rate"
+            ]
+          },
+          {
+            "name": "Product Roadmap Overview",
+            "description": "Outlines the planned features and enhancements for upcoming product iterations.",
+            "required_fields": ["Product Name", "Planned Features", "Timeline"],
+            "optional_fields": ["Stakeholder Reviews", "Market Feedback"],
+            "metrics": [
+              "Feature Completion Percentage",
+              "Customer Input Score",
+              "Resource Allocation"
+            ]
+          },
+          {
+            "name": "Sales Performance Report",
+            "description": "Summarizes sales performance metrics for the product portfolio.",
+            "required_fields": [
+              "Reporting Period",
+              "Sales Data",
+              "Sales Channels"
+            ],
+            "optional_fields": ["Sales Team Performance", "Market Trends"],
+            "metrics": [
+              "Total Sales Revenue",
+              "Sales Growth Rate",
+              "Sales by Region"
+            ]
+          },
+          {
+            "name": "Customer Satisfaction Report",
+            "description": "Measures customer satisfaction and loyalty for products.",
+            "required_fields": [
+              "Product Name",
+              "Survey Methodology",
+              "Satisfaction Levels"
+            ],
+            "optional_fields": ["Feedback Summary", "Actionable Insights"],
+            "metrics": [
+              "Customer Satisfaction Score (CSAT)",
+              "Net Promoter Score (NPS)",
+              "Customer Retention Rate"
+            ]
+          }
+        ],
+        "errorMessage": "Please select a valid report type relevant to the Product Development department."
+      },
+      "responseValidation": "Ensure the selected report aligns with product development objectives."
+    },
+    "timePeriod": {
+      "description": "Ask for the reporting period.",
+      "question": "For what time period do you need the report? Options include Daily, Weekly, Monthly, etc.",
+      "validations": {
+        "required": true,
+        "options": [
+          "Daily",
+          "Weekly",
+          "Monthly",
+          "Quarterly",
+          "Yearly",
+          "Custom Date Range"
+        ],
+        "customDateRangeHandling": "If 'Custom Date Range' is selected, ask for the start and end dates."
+      },
+      "responseValidation": "Check if the selected time period matches the requested report type."
+    },
+    "metrics": {
+      "description": "Ask the user which key metrics they would like to include.",
+      "question": "Which product development metrics should be included in the report? Common metrics include Revenue Growth, Customer Satisfaction, Time to Market, etc.",
+      "validations": {
+        "required": true,
+        "options": [
+          "Revenue Growth",
+          "Customer Satisfaction",
+          "Time to Market",
+          "Market Share",
+          "Product Profitability",
+          "Customer Acquisition Cost",
+          "Feature Usage",
+          "Retention Rate",
+          "Net Promoter Score (NPS)",
+          "Sales Growth Rate"
+        ],
+        "errorMessage": "Please select at least one metric."
+      },
+      "responseValidation": "Verify that the selected metrics are appropriate for the product development department's operations and report scope."
+    },
+
+    "visualization": {
+      "description": "Inquire about the visualization preference",
+      "question": "How would you like the data to be visualized? Bar chart, Pie chart, Line graph, or Table?",
+      "validations": {
+        "required": true,
+        "options": [
+          {
+            "name": "Bar Chart",
+            "description": "A chart that displays categorical data with rectangular bars.",
+            "subtypes": [
+              {
+                "type": "Vertical Bar",
+                "description": "Displays data in vertical bars to compare different categories."
+              },
+              {
+                "type": "Horizontal Bar",
+                "description": "Displays data in horizontal bars for comparative analysis."
+              },
+              {
+                "type": "Stacked Bar",
+                "description": "Displays the total of different sub-categories in a stacked format."
+              }
+            ],
+            "details": {
+              "2D_3D": ["2D", "3D"],
+              "colors": "Single or Multi-color options",
+              "animations": ["Static", "Animated"]
+            }
+          },
+          {
+            "name": "Pie Chart",
+            "description": "A circular chart divided into slices to illustrate numerical proportions.",
+            "subtypes": [
+              {
+                "type": "Standard Pie",
+                "description": "Displays proportional data as slices of a pie."
+              },
+              {
+                "type": "3D Pie",
+                "description": "Adds depth to the slices to create a 3D effect."
+              },
+              {
+                "type": "Donut Pie",
+                "description": "Similar to a pie chart but with a hole in the center."
+              }
+            ],
+            "details": {
+              "labels": ["Percentage", "Absolute Values"],
+              "interactivity": ["Drill Down", "Hover"],
+              "colors": "Single or Multi-color slices"
+            }
+          },
+          {
+            "name": "Line Graph",
+            "description": "Displays data points connected by a line, often used for trends over time.",
+            "subtypes": [
+              {
+                "type": "Standard Line",
+                "description": "Connects data points with straight lines."
+              },
+              {
+                "type": "Curved Line",
+                "description": "Connects data points with smooth, curved lines."
+              },
+              {
+                "type": "Area Line",
+                "description": "Fills the area beneath the line for cumulative data."
+              }
+            ],
+            "details": {
+              "2D_3D": ["2D", "3D"],
+              "trendline_options": ["Linear", "Moving Average"],
+              "markers": ["Points", "No Points"],
+              "animations": ["Static", "Animated"]
+            }
+          },
+          {
+            "name": "Scatter Plot",
+            "description": "A graph with points plotted to represent values for two variables.",
+            "subtypes": [
+              {
+                "type": "Standard Scatter",
+                "description": "Simple scatter plot with points representing two variables."
+              },
+              {
+                "type": "Bubble Chart",
+                "description": "Similar to scatter plot but adds size to the points to represent a third variable."
+              }
+            ],
+            "details": {
+              "axis_labels": ["X-Axis", "Y-Axis"],
+              "colors": "Single or Multi-color points",
+              "bubble_size": "Represents additional variable"
+            }
+          },
+          {
+            "name": "Heatmap",
+            "description": "A matrix representation where values are represented by color gradients.",
+            "subtypes": [
+              {
+                "type": "Standard Heatmap",
+                "description": "Displays data values with color intensity."
+              },
+              {
+                "type": "Clustered Heatmap",
+                "description": "Groups similar values into clusters."
+              }
+            ],
+            "details": {
+              "color_range": ["Low to High", "High to Low"],
+              "interactivity": ["Drill Down", "Hover"],
+              "grid_size": "Adjustable grid resolution"
+            }
+          }
+        ],
+        "errorMessage": "Please choose a valid visualization type."
+      },
+      "responseValidation": "Make sure the selected visualization is applicable to the report data."
+    },
+
+    "validationRules": {
+      "general": {
+        "rules": [
+          "Ensure that responses align with the Finance and Accounting department's domain and the report type requested."
+        ]
+      },
+      "errorHandling": {
+        "prompts": {
+          "invalidInput": "Your input doesn't seem relevant to Finance and Accounting. Could you please provide a valid response?",
+          "retryPrompt": "Can you clarify your request? Let's ensure the report meets your needs."
+        }
+      }
+    },
+    "summary_format": {
+      "language": "Plain English",
+      "key_points": [
+        "Report Type",
+        "Visualization Type",
+        "Date Range",
+        "Metrics",
+        "Additional Comments"
+      ]
+    }
+  }
+}

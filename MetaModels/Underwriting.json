@@ -1,0 +1,398 @@
+{
+    "department": "Underwriting",
+    "conversationFlow": {
+        "initiate": {
+            "prompt": "What type of report are you looking to generate?",
+            "errorHandling": "Please make sure you are selecting the correct department related to underwriting department reports."
+        },
+        "reportType": {
+            "description": "Determine the type of underwriting report required.",
+            "question": "What type of underwriting report do you need? (e.g., Risk Assessment, Premium Analysis, Claim Analysis)",
+            "validations": {
+                "required": true,
+                "options": [
+                    "Risk Assessment",
+                    "Premium Analysis",
+                    "Claim Analysis",
+                    "Portfolio Analysis",
+                    "Loss Ratio Analysis"
+                ],
+                "option_details": [
+                    {
+                        "name": "Risk Assessment",
+                        "description": "An evaluation process to identify and analyze potential risks that could impact the underwriting decision.",
+                        "required_fields": [
+                            "Risk Factors",
+                            "Probability of Occurrence",
+                            "Potential Impact",
+                            "Date of Assessment"
+                        ],
+                        "optional_fields": [
+                            "Mitigation Strategies",
+                            "Historical Data",
+                            "Industry Benchmarks"
+                        ],
+                        "metrics": [
+                            "Risk Score",
+                            "Risk Exposure",
+                            "Risk Mitigation Effectiveness"
+                        ]
+                    },
+                    {
+                        "name": "Premium Analysis",
+                        "description": "A detailed examination of premium rates charged for insurance policies based on various underwriting criteria.",
+                        "required_fields": [
+                            "Policy Type",
+                            "Base Premium",
+                            "Underwriting Adjustments",
+                            "Date of Analysis"
+                        ],
+                        "optional_fields": [
+                            "Competitor Pricing",
+                            "Market Trends",
+                            "Discounts Offered"
+                        ],
+                        "metrics": [
+                            "Average Premium",
+                            "Premium Growth Rate",
+                            "Loss Ratio per Premium"
+                        ]
+                    },
+                    {
+                        "name": "Claim Analysis",
+                        "description": "An assessment of claims data to evaluate the frequency, severity, and trends of insurance claims.",
+                        "required_fields": [
+                            "Total Claims Filed",
+                            "Claims Paid",
+                            "Claims Denied",
+                            "Date Range"
+                        ],
+                        "optional_fields": [
+                            "Claim Types",
+                            "Claim Processing Time",
+                            "Fraud Indicators"
+                        ],
+                        "metrics": [
+                            "Claim Frequency",
+                            "Average Claim Amount",
+                            "Claims Settlement Ratio"
+                        ]
+                    },
+                    {
+                        "name": "Portfolio Analysis",
+                        "description": "A comprehensive review of the insurance portfolio to assess performance, diversification, and risk exposure.",
+                        "required_fields": [
+                            "Total Policies",
+                            "Total Premiums Collected",
+                            "Claims Incurred",
+                            "Date of Analysis"
+                        ],
+                        "optional_fields": [
+                            "Market Segmentation",
+                            "Geographical Distribution",
+                            "Policy Renewal Rates"
+                        ],
+                        "metrics": [
+                            "Loss Ratio",
+                            "Combined Ratio",
+                            "Return on Equity"
+                        ]
+                    },
+                    {
+                        "name": "Loss Ratio Analysis",
+                        "description": "An evaluation of the loss ratio to determine the profitability of insurance policies over a specified period.",
+                        "required_fields": [
+                            "Total Incurred Losses",
+                            "Total Earned Premiums",
+                            "Date Range"
+                        ],
+                        "optional_fields": [
+                            "Historical Loss Ratios",
+                            "Benchmark Comparisons",
+                            "Policy Type Analysis"
+                        ],
+                        "metrics": [
+                            "Loss Ratio",
+                            "Trend Analysis",
+                            "Expense Ratio"
+                        ]
+                    }
+                ],
+                "errorMessage": "Please select a valid underwriting report type."
+            },
+            "responseValidation": "Ensure the selected report type aligns with underwriting objectives."
+        },
+        "timePeriod": {
+            "description": "Ask for the reporting period",
+            "question": "For what time period do you need the report? You can select from Daily, Weekly, Monthly, etc.",
+            "validations": {
+                "required": true,
+                "options": [
+                    "Daily",
+                    "Weekly",
+                    "Monthly",
+                    "Quarterly",
+                    "Yearly",
+                    "Custom Date Range"
+                ],
+                "customDateRangeHandling": "If 'Custom Date Range' is selected, ask for the start and end dates."
+            },
+            "responseValidation": "Check if the selected time period matches the requested report type."
+        },
+        "visualization": {
+            "description": "Select visualization for report representation.",
+            "question": "Which visualization format would you like for your underwriting report?",
+            "options": [
+                {
+                    "name": "Bar Chart",
+                    "description": "A chart that displays underwriting metrics using bars.",
+                    "subtypes": [
+                        {
+                            "type": "Vertical Bar",
+                            "description": "Displays metrics with vertical bars."
+                        },
+                        {
+                            "type": "Horizontal Bar",
+                            "description": "Displays metrics with horizontal bars."
+                        },
+                        {
+                            "type": "Stacked Bar",
+                            "description": "Displays multiple metrics in a stacked format."
+                        }
+                    ],
+                    "details": {
+                        "2D_3D": [
+                            "2D",
+                            "3D"
+                        ],
+                        "colors": "Single or Multi-color options",
+                        "animations": [
+                            "Static",
+                            "Animated"
+                        ]
+                    }
+                },
+                {
+                    "name": "Line Graph",
+                    "description": "A graph that shows underwriting trends over time.",
+                    "subtypes": [
+                        {
+                            "type": "Standard Line",
+                            "description": "Simple line graph connecting data points."
+                        },
+                        {
+                            "type": "Curved Line",
+                            "description": "Smoothly connects data points for a trend."
+                        },
+                        {
+                            "type": "Area Line",
+                            "description": "Fills area under the line for cumulative effect."
+                        }
+                    ],
+                    "details": {
+                        "2D_3D": [
+                            "2D",
+                            "3D"
+                        ],
+                        "trendline_options": [
+                            "Linear",
+                            "Moving Average"
+                        ],
+                        "markers": [
+                            "Points",
+                            "No Points"
+                        ],
+                        "animations": [
+                            "Static",
+                            "Animated"
+                        ]
+                    }
+                },
+                {
+                    "name": "Pie Chart",
+                    "description": "A chart representing proportions of underwriting categories.",
+                    "subtypes": [
+                        {
+                            "type": "Standard Pie",
+                            "description": "Divides categories into pie slices."
+                        },
+                        {
+                            "type": "3D Pie",
+                            "description": "Provides depth to the pie slices."
+                        },
+                        {
+                            "type": "Donut Pie",
+                            "description": "Pie chart with a central hole."
+                        }
+                    ],
+                    "details": {
+                        "labels": [
+                            "Percentage",
+                            "Absolute Values"
+                        ],
+                        "interactivity": [
+                            "Drill Down",
+                            "Hover"
+                        ],
+                        "colors": "Single or Multi-color slices"
+                    }
+                },
+                {
+                    "name": "Heatmap",
+                    "description": "Visualizes underwriting data using color gradients.",
+                    "subtypes": [
+                        {
+                            "type": "Standard Heatmap",
+                            "description": "Represents data values with varying colors."
+                        },
+                        {
+                            "type": "Clustered Heatmap",
+                            "description": "Groups similar underwriting metrics."
+                        }
+                    ],
+                    "details": {
+                        "color_range": [
+                            "Low to High",
+                            "High to Low"
+                        ],
+                        "interactivity": [
+                            "Drill Down",
+                            "Hover"
+                        ],
+                        "grid_size": "Adjustable grid resolution"
+                    }
+                }
+            ],
+            "errorMessage": "Please choose a valid visualization type."
+        },
+        "metrics": {
+            "description": "Identify key metrics for underwriting.",
+            "question": "Which underwriting metrics should be included in the report?",
+            "validations": {
+                "required": true,
+                "options": [
+                    "Total Premiums Written",
+                    "Loss Ratio",
+                    "Claims Frequency",
+                    "Claims Severity",
+                    "Underwriting Profit",
+                    "Retention Rate",
+                    "Risk Exposure"
+                ],
+                "errorMessage": "Please select at least one metric."
+            },
+            "responseValidation": "Verify that the selected metrics are relevant for the underwriting report."
+        },
+        "filters": {
+            "description": "Options to apply filters to the report.",
+            "question": "Would you like to apply any filters? (e.g., Policy Type, Region, Risk Level)",
+            "validations": {
+                "required": false,
+                "options": {
+                    "byPolicyType": [
+                        "Life",
+                        "Health",
+                        "Auto",
+                        "Home",
+                        "Commercial"
+                    ],
+                    "byRegion": [
+                        "North America",
+                        "Europe",
+                        "Asia-Pacific",
+                        "Middle East",
+                        "Africa"
+                    ],
+                    "byRiskLevel": [
+                        "Low Risk",
+                        "Medium Risk",
+                        "High Risk"
+                    ],
+                    "byClaimStatus": [
+                        "Open",
+                        "Closed",
+                        "Pending"
+                    ]
+                },
+                "errorMessage": "Please provide valid filter criteria."
+            },
+            "responseValidation": "Ensure that the filters are applicable to underwriting data."
+        },
+        "subReports": {
+            "description": "Determine if detailed breakdowns or sub-reports are required.",
+            "question": "Would you like any detailed breakdowns or sub-reports?",
+            "validations": {
+                "required": false,
+                "options": [
+                    "Policy Type Breakdown",
+                    "Claims Breakdown",
+                    "Risk Assessment Breakdown",
+                    "Regional Performance",
+                    "Trend Analysis"
+                ],
+                "errorMessage": "Please select a valid sub-report type."
+            },
+            "responseValidation": "Ensure the sub-report is compatible with the main report type."
+        },
+        "currency": {
+            "description": "Specify the currency format for the report.",
+            "question": "Which currency format would you like the report to be in? (USD, EUR, INR, etc.)",
+            "validations": {
+                "required": true,
+                "options": [
+                    "USD",
+                    "EUR",
+                    "INR",
+                    "GBP",
+                    "JPY",
+                    "CNY",
+                    "Custom"
+                ],
+                "errorMessage": "Please select a valid currency format."
+            },
+            "responseValidation": "Verify if the currency is appropriate for the region or data source."
+        },
+        "comparisons": {
+            "description": "Check if comparisons are needed for underwriting metrics.",
+            "question": "Do you want to include any comparisons? (e.g., Year-over-Year, Quarter-over-Quarter)",
+            "validations": {
+                "required": false,
+                "options": [
+                    "Year-over-Year Comparison",
+                    "Quarter-over-Quarter Comparison",
+                    "Budget vs Actual",
+                    "Risk vs Premium Analysis"
+                ],
+                "errorMessage": "Please select a valid comparison option."
+            },
+            "responseValidation": "Ensure that the comparison makes sense for the selected metrics and time period."
+        }
+    },
+    "validationRules": {
+        "general": {
+            "rules": [
+                "Ensure that responses align with the Underwriting department's domain and the report type requested."
+            ]
+        },
+        "errorHandling": {
+            "prompts": {
+                "invalidInput": "Your input doesn't seem relevant to Underwriting. Could you please provide a valid response?",
+                "retryPrompt": "Can you clarify your request? Let's ensure the report meets your underwriting needs."
+            }
+        }
+    },
+    "summary_format": {
+        "language": "Plain English",
+        "key_points": [
+            "Report Type",
+            "Visualization Type",
+            "Selected Filters",
+            "Date Range",
+            "Metrics",
+            "Sub-reports",
+            "Currency Format",
+            "Comparisons",
+            "Additional Comments"
+        ]
+    }
+}

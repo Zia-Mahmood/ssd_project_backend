@@ -1,0 +1,355 @@
+{
+    "department": "Actuarial",
+    "conversationFlow": {
+        "initiate": {
+            "prompt": "What type of report are you looking to generate?",
+            "errorHandling": "Please make sure you are selecting the correct department related to financial reports."
+        },
+        "reportType": {
+            "description": "Identify the type of actuarial report required",
+            "question": "What type of actuarial report do you need? (e.g., Risk Assessment, Claims Analysis, Pricing Analysis)",
+            "validations": {
+                "required": true,
+                "options": [
+                    "Risk Assessment",
+                    "Claims Analysis",
+                    "Pricing Analysis",
+                    "Loss Reserve Analysis",
+                    "Experience Analysis"
+                ],
+                "option_details": [
+                    {
+                        "name": "Risk Assessment",
+                        "description": "A systematic process for identifying and evaluating risks that may impact the organization’s objectives.",
+                        "required_fields": [
+                            "Risk Description",
+                            "Likelihood of Occurrence",
+                            "Impact Severity",
+                            "Risk Score",
+                            "Date Range"
+                        ],
+                        "optional_fields": [
+                            "Risk Mitigation Strategies",
+                            "Responsible Parties",
+                            "Monitoring Frequency"
+                        ],
+                        "metrics": [
+                            "Total Risk Exposure",
+                            "Average Risk Score",
+                            "Mitigation Effectiveness"
+                        ]
+                    },
+                    {
+                        "name": "Claims Analysis",
+                        "description": "An evaluation of claims data to identify trends, patterns, and areas for improvement.",
+                        "required_fields": [
+                            "Total Claims Amount",
+                            "Number of Claims",
+                            "Claims by Type",
+                            "Date Range"
+                        ],
+                        "optional_fields": [
+                            "Claims Resolution Time",
+                            "Fraud Indicators",
+                            "Claimant Demographics"
+                        ],
+                        "metrics": [
+                            "Claims Frequency",
+                            "Claims Severity",
+                            "Loss Ratio"
+                        ]
+                    },
+                    {
+                        "name": "Pricing Analysis",
+                        "description": "An assessment of pricing strategies based on market conditions, risk factors, and competitive positioning.",
+                        "required_fields": [
+                            "Premium Amount",
+                            "Coverage Amount",
+                            "Market Competitors",
+                            "Date Range"
+                        ],
+                        "optional_fields": [
+                            "Discounts Offered",
+                            "Customer Segments",
+                            "Pricing Models"
+                        ],
+                        "metrics": [
+                            "Rate of Return",
+                            "Competitive Pricing Index",
+                            "Price Elasticity"
+                        ]
+                    },
+                    {
+                        "name": "Loss Reserve Analysis",
+                        "description": "The process of estimating the amount of money needed to cover future claims payments.",
+                        "required_fields": [
+                            "Estimated Ultimate Losses",
+                            "Incurred But Not Reported (IBNR)",
+                            "Loss Development Factors",
+                            "Date Range"
+                        ],
+                        "optional_fields": [
+                            "Reserve Adequacy Testing",
+                            "Historical Data",
+                            "Actuarial Assumptions"
+                        ],
+                        "metrics": [
+                            "Reserve Ratio",
+                            "Average Reserve per Claim",
+                            "Loss Development Triangle"
+                        ]
+                    },
+                    {
+                        "name": "Experience Analysis",
+                        "description": "A review of past performance data to identify trends and inform future actuarial assumptions.",
+                        "required_fields": [
+                            "Claim Experience Data",
+                            "Policyholder Behavior",
+                            "Loss Ratios",
+                            "Date Range"
+                        ],
+                        "optional_fields": [
+                            "Comparison with Industry Benchmarks",
+                            "Segmentation Analysis",
+                            "Predictive Modeling Outputs"
+                        ],
+                        "metrics": [
+                            "Experience Ratio",
+                            "Trend Analysis",
+                            "Predictive Accuracy"
+                        ]
+                    }
+                ],
+                "errorMessage": "Please select a valid report type."
+            },
+            "responseValidation": "Ensure the selected report type is applicable to actuarial analysis."
+        },
+        "timePeriod": {
+            "description": "Ask for the reporting period",
+            "question": "For what time period do you need the report? You can select from Daily, Weekly, Monthly, etc.",
+            "validations": {
+                "required": true,
+                "options": [
+                    "Daily",
+                    "Weekly",
+                    "Monthly",
+                    "Quarterly",
+                    "Yearly",
+                    "Custom Date Range"
+                ],
+                "customDateRangeHandling": "If 'Custom Date Range' is selected, ask for the start and end dates."
+            },
+            "responseValidation": "Check if the selected time period matches the requested report type."
+        },
+        "visualization": {
+            "description": "Determine the type of visualization for presenting results",
+            "question": "What type of visualization would you like for the report? (e.g., Charts, Tables, Graphs)",
+            "validations": {
+                "required": true,
+                "options": [
+                    {
+                        "name": "Bar Chart",
+                        "description": "Displays categorical data with rectangular bars.",
+                        "subtypes": [
+                            {
+                                "type": "Vertical Bar",
+                                "description": "Used for comparing different categories."
+                            },
+                            {
+                                "type": "Stacked Bar",
+                                "description": "Displays total of different sub-categories."
+                            }
+                        ],
+                        "details": {
+                            "2D_3D": [
+                                "2D",
+                                "3D"
+                            ],
+                            "colors": "Single or Multi-color options",
+                            "animations": [
+                                "Static",
+                                "Animated"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "Pie Chart",
+                        "description": "A circular chart divided into slices to illustrate numerical proportions.",
+                        "subtypes": [
+                            {
+                                "type": "Standard Pie",
+                                "description": "Displays proportional data as slices of a pie."
+                            },
+                            {
+                                "type": "3D Pie",
+                                "description": "Adds depth to the slices to create a 3D effect."
+                            },
+                            {
+                                "type": "Donut Pie",
+                                "description": "Similar to a pie chart but with a hole in the center."
+                            }
+                        ],
+                        "details": {
+                            "labels": [
+                                "Percentage",
+                                "Absolute Values"
+                            ],
+                            "interactivity": [
+                                "Drill Down",
+                                "Hover"
+                            ],
+                            "colors": "Single or Multi-color slices"
+                        }
+                    },
+                    {
+                        "name": "Line Graph",
+                        "description": "Displays trends over time using connected data points.",
+                        "subtypes": [
+                            {
+                                "type": "Standard Line",
+                                "description": "Connects data points with straight lines."
+                            },
+                            {
+                                "type": "Curved Line",
+                                "description": "Smoothly connects data points."
+                            }
+                        ],
+                        "details": {
+                            "2D_3D": [
+                                "2D",
+                                "3D"
+                            ],
+                            "trendline_options": [
+                                "Linear",
+                                "Moving Average"
+                            ],
+                            "markers": [
+                                "Points",
+                                "No Points"
+                            ],
+                            "animations": [
+                                "Static",
+                                "Animated"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "Table",
+                        "description": "A structured representation of data in rows and columns.",
+                        "details": {
+                            "sortable": true,
+                            "filterable": true,
+                            "pagination": true
+                        }
+                    }
+                ],
+                "errorMessage": "Please select a valid visualization type."
+            },
+            "responseValidation": "Make sure the visualization effectively represents the actuarial data."
+        },
+        "metrics": {
+            "description": "Ask the user to specify key metrics for analysis",
+            "question": "Which key metrics should be included in the report? Common metrics include Loss Ratios, Claim Frequency, etc.",
+            "validations": {
+                "required": true,
+                "options": [
+                    "Loss Ratios",
+                    "Claim Frequency",
+                    "Reserve Levels",
+                    "Premium Growth",
+                    "Policyholder Retention"
+                ],
+                "errorMessage": "Please select at least one metric."
+            },
+            "responseValidation": "Verify that the selected metrics are relevant for the chosen report type."
+        },
+        "filters": {
+            "description": "Ask the user if they want to apply any filters",
+            "question": "Would you like to apply any filters? (e.g., By Product Line, By Region, By Claim Type)",
+            "validations": {
+                "required": false,
+                "options": {
+                    "byProductLine": [
+                        "Life Insurance",
+                        "Health Insurance",
+                        "Property Insurance",
+                        "Casualty Insurance"
+                    ],
+                    "byRegion": [
+                        "North America",
+                        "Europe",
+                        "Asia-Pacific",
+                        "Middle East",
+                        "Africa"
+                    ],
+                    "byClaimType": [
+                        "Property Damage",
+                        "Medical",
+                        "Liability"
+                    ]
+                },
+                "errorMessage": "Please provide valid filter criteria."
+            },
+            "responseValidation": "Ensure that the filters are applicable to the actuarial data."
+        },
+        "currency": {
+            "description": "Ask for the preferred currency format",
+            "question": "Which currency format would you like the report to be in? (USD, EUR, INR, etc.)",
+            "validations": {
+                "required": true,
+                "options": [
+                    "USD",
+                    "EUR",
+                    "INR",
+                    "GBP",
+                    "JPY",
+                    "CNY",
+                    "Custom"
+                ],
+                "errorMessage": "Please select a valid currency format."
+            },
+            "responseValidation": "Verify if the currency is appropriate for the region or data source."
+        },
+        "comparisons": {
+            "description": "Inquire if comparisons are needed",
+            "question": "Do you want to include any comparisons? (e.g., Year-over-Year, Month-over-Month, etc.)",
+            "validations": {
+                "required": false,
+                "options": [
+                    "Year-over-Year Comparison",
+                    "Month-over-Month Comparison",
+                    "Projected vs Actual",
+                    "Target vs Actual"
+                ],
+                "errorMessage": "Please select a valid comparison option."
+            },
+            "responseValidation": "Ensure that the comparison makes sense for the selected metrics and time period."
+        }
+    },
+    "validationRules": {
+        "general": {
+            "rules": [
+                "Ensure that responses align with the Actuarial department's domain and the report type requested."
+            ]
+        },
+        "errorHandling": {
+            "prompts": {
+                "invalidInput": "Your input doesn't seem relevant to Actuarial analysis. Could you please provide a valid response?",
+                "retryPrompt": "Can you clarify your request? Let's ensure the report meets your needs."
+            }
+        }
+    },
+    "summary_format": {
+        "language": "Plain English",
+        "key_points": [
+            "Report Type",
+            "Visualization Type",
+            "Selected Filters",
+            "Date Range",
+            "Metrics",
+            "Currency",
+            "Comparisons",
+            "Additional Comments"
+        ]
+    }
+}

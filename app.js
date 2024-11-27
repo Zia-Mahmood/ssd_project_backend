@@ -6,13 +6,14 @@ const MongoDBStore = require("connect-mongodb-session")(session);
 const cors = require("cors");
 const bodyParser = require("body-parser");
 
-const userRoutes = require("./routes/userRoutes");
+const userRoutes = require("./routes/userRoutes.js");
+const chatLogRoutes = require("./routes/ChatLogRoutes.js");
 
 const app = express();
-const port = process.env.PORT || 6001;
 
 dotenv.config({ path: "./config.env" });
 
+const port = process.env.PORT || 6001;
 const uri = process.env.DATABASE_CONNECTION_STRING;
 
 const mongoDBstore = new MongoDBStore({
@@ -63,6 +64,7 @@ app.use(
 );
 
 app.use("/api", userRoutes);
+app.use('/api',chatLogRoutes);
 
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
