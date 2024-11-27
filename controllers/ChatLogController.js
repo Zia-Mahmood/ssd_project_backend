@@ -3,8 +3,8 @@ const MetaModel = require("../models/MetaModelSchema");
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 const ChatLog = require("../models/ChatLogSchema"); // Adjust the path if needed
 dotenv.config({ path: "./config.env" });
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+
+
 // Create a new chat log
 const createChatLog = async (req, res) => {
   const { logName,userEmail, metaModelName } = req.body;
@@ -102,7 +102,9 @@ const handleUserMessage = async (req, res) => {
     //console.log("Transformed History:", history);
 
     // Start a chat session with the transformed history
-    cosole.log(history);
+    
+    const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
     const chat = model.startChat({ history:history });
     console.log("Chat started");
     let result = await chat.sendMessage(userMessage);
