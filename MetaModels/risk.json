@@ -1,0 +1,354 @@
+{
+  "department": "Risk Management",
+  "conversationFlow": {
+    "initiate": {
+      "prompt": "What type of risk assessment or management report are you looking to generate?",
+      "errorHandling": "Ensure you are selecting a report that aligns with risk management standards and organizational policies."
+    },
+    "reportType": {
+      "description": "Ask the user to specify the type of risk report.",
+      "question": "What kind of risk report would you like? Options include Risk Assessment, Risk Register, Incident Report, etc.",
+      "validations": {
+        "required": true,
+        "options": [
+          "Risk Assessment Report",
+          "Risk Register Report",
+          "Incident Report",
+          "Mitigation Plan Report",
+          "Risk Treatment Report",
+          "Compliance Risk Report",
+          "Operational Risk Report",
+          "Financial Risk Report",
+          "Strategic Risk Report",
+          "Reputational Risk Report"
+        ],
+        "option_details": [
+          {
+            "name": "Risk Assessment Report",
+            "description": "Evaluates the potential risks associated with specific projects or processes.",
+            "required_fields": [
+              "Risk Description",
+              "Likelihood",
+              "Impact",
+              "Mitigation Strategy"
+            ],
+            "optional_fields": [
+              "Risk Owner",
+              "Review Date",
+              "Follow-up Actions"
+            ],
+            "metrics": [
+              "Total Risks Identified",
+              "High-Risk Items",
+              "Mitigation Effectiveness"
+            ]
+          },
+          {
+            "name": "Risk Register Report",
+            "description": "Maintains a comprehensive list of all identified risks and their status.",
+            "required_fields": ["Risk ID", "Description", "Status", "Owner"],
+            "optional_fields": ["Last Updated", "Next Review Date"],
+            "metrics": ["Total Risks", "Open Risks", "Closed Risks"]
+          },
+          {
+            "name": "Incident Report",
+            "description": "Documents incidents that have occurred, including near misses.",
+            "required_fields": [
+              "Incident Description",
+              "Date of Incident",
+              "Reported By",
+              "Impact Level"
+            ],
+            "optional_fields": [
+              "Root Cause",
+              "Corrective Actions",
+              "Follow-up Date"
+            ],
+            "metrics": [
+              "Total Incidents",
+              "Resolved Incidents",
+              "Pending Actions"
+            ]
+          },
+          {
+            "name": "Mitigation Plan Report",
+            "description": "Outlines strategies for mitigating identified risks.",
+            "required_fields": [
+              "Risk Description",
+              "Mitigation Actions",
+              "Responsible Party",
+              "Timeline"
+            ],
+            "optional_fields": ["Budget", "Resources Needed"],
+            "metrics": [
+              "Risks Mitigated",
+              "Time to Mitigate",
+              "Cost of Mitigation"
+            ]
+          },
+          {
+            "name": "Risk Treatment Report",
+            "description": "Summarizes actions taken to manage risks, including acceptance, avoidance, or transfer.",
+            "required_fields": [
+              "Risk Description",
+              "Treatment Option",
+              "Implementation Date",
+              "Status"
+            ],
+            "optional_fields": ["Comments", "Review Date"],
+            "metrics": [
+              "Total Risks Treated",
+              "Risks Accepted",
+              "Risks Transferred"
+            ]
+          },
+          {
+            "name": "Compliance Risk Report",
+            "description": "Identifies risks related to compliance with laws and regulations.",
+            "required_fields": [
+              "Compliance Area",
+              "Risk Level",
+              "Mitigation Measures",
+              "Assessment Date"
+            ],
+            "optional_fields": [
+              "Impact Score",
+              "Likelihood",
+              "Monitoring Strategy"
+            ],
+            "metrics": [
+              "Compliance Risks Identified",
+              "Risks Mitigated",
+              "Compliance Audit Results"
+            ]
+          },
+          {
+            "name": "Operational Risk Report",
+            "description": "Assesses risks arising from operational failures or disruptions.",
+            "required_fields": [
+              "Operational Area",
+              "Risk Description",
+              "Impact",
+              "Mitigation Strategy"
+            ],
+            "optional_fields": ["Incident History", "Response Plan"],
+            "metrics": [
+              "Total Operational Risks",
+              "Incidents Reported",
+              "Mitigation Success Rate"
+            ]
+          },
+          {
+            "name": "Financial Risk Report",
+            "description": "Analyzes risks related to financial losses or market fluctuations.",
+            "required_fields": [
+              "Risk Type",
+              "Financial Impact",
+              "Likelihood",
+              "Mitigation Measures"
+            ],
+            "optional_fields": ["Historical Data", "Market Trends"],
+            "metrics": [
+              "Financial Losses Prevented",
+              "Risks Identified",
+              "Market Volatility Index"
+            ]
+          },
+          {
+            "name": "Strategic Risk Report",
+            "description": "Evaluates risks that could impact the organization's strategic objectives.",
+            "required_fields": [
+              "Strategic Initiative",
+              "Risk Description",
+              "Impact Level",
+              "Mitigation Strategy"
+            ],
+            "optional_fields": ["Stakeholder Input", "Implementation Date"],
+            "metrics": [
+              "Strategic Risks Identified",
+              "Mitigation Progress",
+              "Impact on Objectives"
+            ]
+          },
+          {
+            "name": "Reputational Risk Report",
+            "description": "Assesses risks that could damage the organization's reputation.",
+            "required_fields": [
+              "Risk Description",
+              "Impact Level",
+              "Mitigation Measures",
+              "Incident History"
+            ],
+            "optional_fields": ["Stakeholder Feedback", "Monitoring Plan"],
+            "metrics": [
+              "Reputational Incidents",
+              "Stakeholder Trust Index",
+              "Response Time"
+            ]
+          }
+        ],
+        "errorMessage": "Please select a valid report type relevant to the Risk Management department."
+      },
+      "responseValidation": "Ensure the selected report aligns with risk management objectives and organizational policies."
+    },
+    "timePeriod": {
+      "description": "Ask for the reporting period.",
+      "question": "For what time period do you need the report? Options include Daily, Weekly, Monthly, etc.",
+      "validations": {
+        "required": true,
+        "options": [
+          "Daily",
+          "Weekly",
+          "Monthly",
+          "Quarterly",
+          "Yearly",
+          "Custom Date Range"
+        ],
+        "customDateRangeHandling": "If 'Custom Date Range' is selected, ask for the start and end dates."
+      },
+      "responseValidation": "Check if the selected time period matches the requested report type."
+    },
+    "visualization": {
+      "description": "Inquire about the visualization preference",
+      "question": "How would you like the data to be visualized? Bar chart, Pie chart, Line graph, or Table?",
+      "validations": {
+        "required": true,
+        "options": [
+          {
+            "name": "Bar Chart",
+            "description": "A chart that displays categorical data with rectangular bars.",
+            "subtypes": [
+              {
+                "type": "Vertical Bar",
+                "description": "Displays data in vertical bars to compare different categories."
+              },
+              {
+                "type": "Horizontal Bar",
+                "description": "Displays data in horizontal bars for comparative analysis."
+              },
+              {
+                "type": "Stacked Bar",
+                "description": "Displays the total of different sub-categories in a stacked format."
+              }
+            ],
+            "details": {
+              "2D_3D": ["2D", "3D"],
+              "colors": "Single or Multi-color options",
+              "animations": ["Static", "Animated"]
+            }
+          },
+          {
+            "name": "Pie Chart",
+            "description": "A circular chart divided into slices to illustrate numerical proportions.",
+            "subtypes": [
+              {
+                "type": "Standard Pie",
+                "description": "Displays proportional data as slices of a pie."
+              },
+              {
+                "type": "3D Pie",
+                "description": "Adds depth to the slices to create a 3D effect."
+              },
+              {
+                "type": "Donut Pie",
+                "description": "Similar to a pie chart but with a hole in the center."
+              }
+            ],
+            "details": {
+              "labels": ["Percentage", "Absolute Values"],
+              "interactivity": ["Drill Down", "Hover"],
+              "colors": "Single or Multi-color slices"
+            }
+          },
+          {
+            "name": "Line Graph",
+            "description": "Displays data points connected by a line, often used for trends over time.",
+            "subtypes": [
+              {
+                "type": "Standard Line",
+                "description": "Connects data points with straight lines."
+              },
+              {
+                "type": "Curved Line",
+                "description": "Connects data points with smooth, curved lines."
+              },
+              {
+                "type": "Area Line",
+                "description": "Fills the area beneath the line for cumulative data."
+              }
+            ],
+            "details": {
+              "2D_3D": ["2D", "3D"],
+              "trendline_options": ["Linear", "Moving Average"],
+              "markers": ["Points", "No Points"],
+              "animations": ["Static", "Animated"]
+            }
+          },
+          {
+            "name": "Scatter Plot",
+            "description": "A graph with points plotted to represent values for two variables.",
+            "subtypes": [
+              {
+                "type": "Standard Scatter",
+                "description": "Simple scatter plot with points representing two variables."
+              },
+              {
+                "type": "Bubble Chart",
+                "description": "Similar to scatter plot but adds size to the points to represent a third variable."
+              }
+            ],
+            "details": {
+              "axis_labels": ["X-Axis", "Y-Axis"],
+              "colors": "Single or Multi-color points",
+              "bubble_size": "Represents additional variable"
+            }
+          },
+          {
+            "name": "Heatmap",
+            "description": "A matrix representation where values are represented by color gradients.",
+            "subtypes": [
+              {
+                "type": "Standard Heatmap",
+                "description": "Displays data values with color intensity."
+              },
+              {
+                "type": "Clustered Heatmap",
+                "description": "Groups similar values into clusters."
+              }
+            ],
+            "details": {
+              "color_range": ["Low to High", "High to Low"],
+              "interactivity": ["Drill Down", "Hover"],
+              "grid_size": "Adjustable grid resolution"
+            }
+          }
+        ],
+        "errorMessage": "Please choose a valid visualization type."
+      },
+      "responseValidation": "Make sure the selected visualization is applicable to the report data."
+    },
+    "validationRules": {
+      "general": {
+        "rules": [
+          "Ensure that responses align with the Finance and Accounting department's domain and the report type requested."
+        ]
+      },
+      "errorHandling": {
+        "prompts": {
+          "invalidInput": "Your input doesn't seem relevant to Finance and Accounting. Could you please provide a valid response?",
+          "retryPrompt": "Can you clarify your request? Let's ensure the report meets your needs."
+        }
+      }
+    },
+    "summary_format": {
+      "language": "Plain English",
+      "key_points": [
+        "Report Type",
+        "Visualization Type",
+        "Date Range",
+        "Metrics",
+        "Additional Comments"
+      ]
+    }
+  }
+}

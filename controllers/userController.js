@@ -54,7 +54,7 @@ const login = async (req, res) => {
             console.log("Last login time updated");
 
             // Creating user session to keep user logged in also on refresh
-            const userSession = { name: user.email };
+            const userSession = { name: user.name,role: user.role,email: user.email };
             req.session.user = userSession; // attach user session to session object from express-session
             req.session.save();
 

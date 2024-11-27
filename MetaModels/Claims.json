@@ -1,0 +1,401 @@
+{
+    "department": "Claims",
+    "conversationFlow": {
+        "initiate": {
+            "prompt": "What type of report are you looking to generate?",
+            "errorHandling": "Please make sure you are selecting the correct department related to claims reports."
+        },
+        "reportType": {
+            "description": "Identify the type of claims report required.",
+            "question": "What type of claims report do you need?",
+            "validations": {
+                "required": true,
+                "options": [
+                    "Claim Summary Report",
+                    "Claim Status Report",
+                    "Claims Paid Report",
+                    "Claims Denied Report",
+                    "Claims by Department Report"
+                ],
+                "option_details": [
+                    {
+                        "name": "Claim Summary Report",
+                        "description": "A report summarizing the total claims submitted, approved, denied, and pending during a specific period.",
+                        "required_fields": [
+                            "Total Claims Submitted",
+                            "Total Claims Approved",
+                            "Total Claims Denied",
+                            "Date Range"
+                        ],
+                        "optional_fields": [
+                            "Claims by Department",
+                            "Average Processing Time",
+                            "Claim Types"
+                        ],
+                        "metrics": [
+                            "Approval Rate",
+                            "Denial Rate",
+                            "Average Claim Value"
+                        ]
+                    },
+                    {
+                        "name": "Claim Status Report",
+                        "description": "A report detailing the current status of individual claims, including their processing stages.",
+                        "required_fields": [
+                            "Claim ID",
+                            "Claimant Name",
+                            "Current Status",
+                            "Date Range"
+                        ],
+                        "optional_fields": [
+                            "Assigned Adjuster",
+                            "Last Update Date",
+                            "Notes"
+                        ],
+                        "metrics": [
+                            "Total Claims in Progress",
+                            "Total Claims Resolved",
+                            "Average Resolution Time"
+                        ]
+                    },
+                    {
+                        "name": "Claims Paid Report",
+                        "description": "A report providing details on claims that have been approved and paid out within a specific period.",
+                        "required_fields": [
+                            "Total Claims Paid",
+                            "Total Amount Paid",
+                            "Claim IDs",
+                            "Date Range"
+                        ],
+                        "optional_fields": [
+                            "Payment Methods",
+                            "Claims by Department",
+                            "Average Payment Amount"
+                        ],
+                        "metrics": [
+                            "Total Claims Paid",
+                            "Average Payment Time",
+                            "Claim Payment Ratio"
+                        ]
+                    },
+                    {
+                        "name": "Claims Denied Report",
+                        "description": "A report outlining claims that were denied, including reasons for denial and any appeals.",
+                        "required_fields": [
+                            "Total Claims Denied",
+                            "Reasons for Denial",
+                            "Claim IDs",
+                            "Date Range"
+                        ],
+                        "optional_fields": [
+                            "Department Handling Denials",
+                            "Average Denial Rate",
+                            "Appeal Status"
+                        ],
+                        "metrics": [
+                            "Denial Rate",
+                            "Average Denial Amount",
+                            "Claims Reopened"
+                        ]
+                    },
+                    {
+                        "name": "Claims by Department Report",
+                        "description": "A report analyzing claims data by different departments within the organization.",
+                        "required_fields": [
+                            "Department Name",
+                            "Total Claims Submitted",
+                            "Total Claims Approved",
+                            "Date Range"
+                        ],
+                        "optional_fields": [
+                            "Claims Denied",
+                            "Average Processing Time",
+                            "Department Contact"
+                        ],
+                        "metrics": [
+                            "Total Claims by Department",
+                            "Approval Rate by Department",
+                            "Denial Rate by Department"
+                        ]
+                    }
+                ],
+                "errorMessage": "Please select a valid report type."
+            },
+            "responseValidation": "Ensure the chosen report type aligns with the claims data available."
+        },
+        "timePeriod": {
+            "description": "Ask for the reporting period",
+            "question": "For what time period do you need the report? You can select from Daily, Weekly, Monthly, etc.",
+            "validations": {
+                "required": true,
+                "options": [
+                    "Daily",
+                    "Weekly",
+                    "Monthly",
+                    "Quarterly",
+                    "Yearly",
+                    "Custom Date Range"
+                ],
+                "customDateRangeHandling": "If 'Custom Date Range' is selected, ask for the start and end dates."
+            },
+            "responseValidation": "Check if the selected time period matches the requested report type."
+        },
+        "visualizations": {
+            "description": "Select the preferred visualization for the report.",
+            "question": "Which visualization type would you like for your claims report?",
+            "validations": {
+                "required": true,
+                "options": [
+                    {
+                        "name": "Bar Chart",
+                        "description": "A chart that displays categorical data with rectangular bars.",
+                        "subtypes": [
+                            {
+                                "type": "Vertical Bar",
+                                "description": "Displays data in vertical bars for comparative analysis."
+                            },
+                            {
+                                "type": "Horizontal Bar",
+                                "description": "Displays data in horizontal bars for comparative analysis."
+                            },
+                            {
+                                "type": "Stacked Bar",
+                                "description": "Displays total claims by categories in a stacked format."
+                            }
+                        ],
+                        "details": {
+                            "2D_3D": [
+                                "2D",
+                                "3D"
+                            ],
+                            "colors": "Single or Multi-color options",
+                            "animations": [
+                                "Static",
+                                "Animated"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "Pie Chart",
+                        "description": "A circular chart divided into slices to illustrate numerical proportions.",
+                        "subtypes": [
+                            {
+                                "type": "Standard Pie",
+                                "description": "Displays proportional data as slices of a pie."
+                            },
+                            {
+                                "type": "3D Pie",
+                                "description": "Adds depth to the slices to create a 3D effect."
+                            },
+                            {
+                                "type": "Donut Pie",
+                                "description": "Similar to a pie chart but with a hole in the center."
+                            }
+                        ],
+                        "details": {
+                            "labels": [
+                                "Percentage",
+                                "Absolute Values"
+                            ],
+                            "interactivity": [
+                                "Drill Down",
+                                "Hover"
+                            ],
+                            "colors": "Single or Multi-color slices"
+                        }
+                    },
+                    {
+                        "name": "Line Graph",
+                        "description": "Displays data points connected by a line, often used for trends over time.",
+                        "subtypes": [
+                            {
+                                "type": "Standard Line",
+                                "description": "Connects data points with straight lines."
+                            },
+                            {
+                                "type": "Curved Line",
+                                "description": "Connects data points with smooth, curved lines."
+                            },
+                            {
+                                "type": "Area Line",
+                                "description": "Fills the area beneath the line for cumulative claims data."
+                            }
+                        ],
+                        "details": {
+                            "2D_3D": [
+                                "2D",
+                                "3D"
+                            ],
+                            "trendline_options": [
+                                "Linear",
+                                "Moving Average"
+                            ],
+                            "markers": [
+                                "Points",
+                                "No Points"
+                            ],
+                            "animations": [
+                                "Static",
+                                "Animated"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "Heatmap",
+                        "description": "A matrix representation where values are represented by color gradients.",
+                        "subtypes": [
+                            {
+                                "type": "Standard Heatmap",
+                                "description": "Displays claims data values with color intensity."
+                            },
+                            {
+                                "type": "Clustered Heatmap",
+                                "description": "Groups similar claims values into clusters."
+                            }
+                        ],
+                        "details": {
+                            "color_range": [
+                                "Low to High",
+                                "High to Low"
+                            ],
+                            "interactivity": [
+                                "Drill Down",
+                                "Hover"
+                            ],
+                            "grid_size": "Adjustable grid resolution"
+                        }
+                    }
+                ],
+                "errorMessage": "Please choose a valid visualization type."
+            },
+            "responseValidation": "Verify that the selected visualization is suitable for the claims report."
+        },
+        "metrics": {
+            "description": "Identify the key metrics for the claims report.",
+            "question": "Which key metrics should be included in the claims report?",
+            "validations": {
+                "required": true,
+                "options": [
+                    "Total Claims Filed",
+                    "Claims Approved",
+                    "Claims Denied",
+                    "Average Claim Amount",
+                    "Total Payout",
+                    "Pending Claims"
+                ],
+                "errorMessage": "Please select at least one metric."
+            },
+            "responseValidation": "Ensure the selected metrics are relevant for the claims report."
+        },
+        "filters": {
+            "description": "Specify if any filters should be applied to the claims data.",
+            "question": "Would you like to apply any filters? You can filter by Claim Type, Region, Department, Status, etc.",
+            "validations": {
+                "required": false,
+                "options": {
+                    "byClaimType": [
+                        "Health",
+                        "Auto",
+                        "Property",
+                        "Liability",
+                        "Travel"
+                    ],
+                    "byRegion": [
+                        "North America",
+                        "Europe",
+                        "Asia-Pacific",
+                        "Middle East",
+                        "Africa"
+                    ],
+                    "byDepartment": [
+                        "Claims Management",
+                        "Customer Service",
+                        "Fraud Detection"
+                    ],
+                    "byStatus": [
+                        "Pending",
+                        "Approved",
+                        "Denied"
+                    ]
+                },
+                "errorMessage": "Please provide valid filter criteria."
+            },
+            "responseValidation": "Ensure that the filters are applicable to the claims data."
+        },
+        "subReports": {
+            "description": "Check if any sub-reports are needed.",
+            "question": "Would you like any detailed breakdowns or sub-reports? (e.g., Claims by Department, Claims by Region)",
+            "validations": {
+                "required": false,
+                "options": [
+                    "Claims by Department",
+                    "Claims by Region",
+                    "Claims by Type",
+                    "Claims by Status"
+                ],
+                "errorMessage": "Please select a valid sub-report type."
+            },
+            "responseValidation": "Make sure the sub-report is compatible with the main claims report."
+        },
+        "currency": {
+            "description": "Ask for the preferred currency format.",
+            "question": "Which currency format would you like the claims report to be in? (USD, EUR, INR, etc.)",
+            "validations": {
+                "required": true,
+                "options": [
+                    "USD",
+                    "EUR",
+                    "INR",
+                    "GBP",
+                    "JPY",
+                    "CNY",
+                    "Custom"
+                ],
+                "errorMessage": "Please select a valid currency format."
+            },
+            "responseValidation": "Verify if the currency is appropriate for the claims data."
+        },
+        "comparisons": {
+            "description": "Inquire if comparisons are needed.",
+            "question": "Do you want to include any comparisons? (e.g., Claims Year-over-Year, Claims by Department Comparison)",
+            "validations": {
+                "required": false,
+                "options": [
+                    "Year-over-Year Comparison",
+                    "Month-over-Month Comparison",
+                    "Claims Approved vs Denied",
+                    "Claims by Region Comparison"
+                ],
+                "errorMessage": "Please select a valid comparison option."
+            },
+            "responseValidation": "Ensure that the comparison makes sense for the selected metrics."
+        }
+    },
+    "validationRules": {
+        "general": {
+            "rules": [
+                "Ensure that responses align with the Claims Department's domain and the report type requested."
+            ]
+        },
+        "errorHandling": {
+            "prompts": {
+                "invalidInput": "Your input doesn't seem relevant to the Claims Department. Could you please provide a valid response?",
+                "retryPrompt": "Can you clarify your request? Let's ensure the claims report meets your needs."
+            }
+        }
+    },
+    "summary_format": {
+        "language": "Plain English",
+        "key_points": [
+            "Report Type",
+            "Visualization Type",
+            "Selected Filters",
+            "Date Range",
+            "Metrics",
+            "Sub-Reports",
+            "Currency Format",
+            "Comparisons",
+            "Additional Comments"
+        ]
+    }
+}

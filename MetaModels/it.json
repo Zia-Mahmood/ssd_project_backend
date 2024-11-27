@@ -1,0 +1,429 @@
+{
+  "department": "Information Technology (IT)",
+  "conversationFlow": {
+    "initiate": {
+      "prompt": "What type of IT request or report do you need assistance with?",
+      "errorHandling": "Please select a valid request type or report related to IT services."
+    },
+    "requestType": {
+      "description": "Ask the user to specify the type of IT service or report.",
+      "question": "Please select the type of request. Options include Incident Report, IT Asset Report, Network Performance, etc.",
+      "validations": {
+        "required": true,
+        "options": [
+          "Incident Report",
+          "IT Asset Report",
+          "Network Performance Report",
+          "Software License Management",
+          "User Access Management",
+          "System Uptime and Downtime Report",
+          "Vulnerability Assessment Report",
+          "Change Management Report",
+          "IT Service Ticket Summary",
+          "Backup and Recovery Report",
+          "Capacity Planning Report"
+        ],
+        "option_details": [
+          {
+            "name": "Incident Report",
+            "description": "Details about incidents involving IT systems, outages, or service interruptions.",
+            "required_fields": [
+              "Incident ID",
+              "Incident Description",
+              "Severity Level",
+              "Date and Time of Incident",
+              "Resolution Time"
+            ],
+            "optional_fields": [
+              "Assigned Team",
+              "Root Cause Analysis",
+              "Corrective Actions"
+            ],
+            "metrics": [
+              "Mean Time to Resolution (MTTR)",
+              "Incident Count by Severity",
+              "Recurring Issues"
+            ]
+          },
+          {
+            "name": "IT Asset Report",
+            "description": "Tracks the status and usage of IT assets such as laptops, servers, and peripherals.",
+            "required_fields": ["Asset ID", "Asset Type", "Status", "Location"],
+            "optional_fields": [
+              "Purchase Date",
+              "Warranty Expiration",
+              "Assigned User"
+            ],
+            "metrics": [
+              "Total Active Assets",
+              "Asset Utilization Rate",
+              "Assets Near End-of-Life"
+            ]
+          },
+          {
+            "name": "Network Performance Report",
+            "description": "Analyzes the performance of network components such as bandwidth, latency, and uptime.",
+            "required_fields": [
+              "Bandwidth Usage",
+              "Latency",
+              "Packet Loss",
+              "Uptime"
+            ],
+            "optional_fields": [
+              "Network Traffic by IP",
+              "Service Provider Performance",
+              "Peak Traffic Times"
+            ],
+            "metrics": [
+              "Average Bandwidth Utilization",
+              "Downtime Percentage",
+              "Network Latency"
+            ]
+          },
+          {
+            "name": "Software License Management",
+            "description": "Tracks software licenses and compliance with licensing policies.",
+            "required_fields": [
+              "License Key",
+              "Software Name",
+              "Expiration Date",
+              "Assigned Department"
+            ],
+            "optional_fields": [
+              "License Usage",
+              "Renewal Alerts",
+              "Cost Per License"
+            ],
+            "metrics": [
+              "Active Licenses",
+              "License Renewal Rate",
+              "Compliance Percentage"
+            ]
+          },
+          {
+            "name": "User Access Management",
+            "description": "Monitors and manages user access to IT systems and applications.",
+            "required_fields": [
+              "User ID",
+              "Access Level",
+              "System/Application",
+              "Date of Grant"
+            ],
+            "optional_fields": [
+              "Access Revocation Date",
+              "Audit Logs",
+              "Role-based Access"
+            ],
+            "metrics": [
+              "Access Requests Granted",
+              "Access Violations",
+              "Inactive Accounts"
+            ]
+          },
+          {
+            "name": "System Uptime and Downtime Report",
+            "description": "Monitors system availability over a specified period.",
+            "required_fields": [
+              "System Name",
+              "Uptime Percentage",
+              "Downtime Duration",
+              "Date Range"
+            ],
+            "optional_fields": [
+              "Scheduled Maintenance",
+              "Service Provider",
+              "Failure Logs"
+            ],
+            "metrics": [
+              "System Uptime",
+              "Downtime Incidents",
+              "Time Between Failures"
+            ]
+          },
+          {
+            "name": "Vulnerability Assessment Report",
+            "description": "Identifies vulnerabilities in IT infrastructure.",
+            "required_fields": [
+              "Vulnerability ID",
+              "Description",
+              "Severity Level",
+              "Remediation Status"
+            ],
+            "optional_fields": [
+              "Remediation Timeline",
+              "Impact Assessment",
+              "Mitigation Plan"
+            ],
+            "metrics": [
+              "Critical Vulnerabilities",
+              "Remediation Rate",
+              "Risk Score"
+            ]
+          },
+          {
+            "name": "Change Management Report",
+            "description": "Tracks changes made to IT systems or configurations.",
+            "required_fields": [
+              "Change Request ID",
+              "Change Description",
+              "Approval Status",
+              "Implementation Date"
+            ],
+            "optional_fields": [
+              "Rollback Plan",
+              "Impact Analysis",
+              "Change Owner"
+            ],
+            "metrics": [
+              "Successful Changes",
+              "Failed Changes",
+              "Change Approval Time"
+            ]
+          },
+          {
+            "name": "IT Service Ticket Summary",
+            "description": "Summarizes open, resolved, and pending IT service tickets.",
+            "required_fields": [
+              "Ticket ID",
+              "Issue Type",
+              "Status",
+              "Date Opened"
+            ],
+            "optional_fields": [
+              "Resolution Time",
+              "Assigned Team",
+              "Customer Satisfaction Score"
+            ],
+            "metrics": [
+              "Open Tickets",
+              "Resolved Tickets",
+              "Average Resolution Time"
+            ]
+          },
+          {
+            "name": "Backup and Recovery Report",
+            "description": "Tracks the status of backups and recovery operations.",
+            "required_fields": [
+              "Backup ID",
+              "Backup Date",
+              "Recovery Status",
+              "Storage Location"
+            ],
+            "optional_fields": [
+              "Retention Period",
+              "Failure Logs",
+              "Data Volume"
+            ],
+            "metrics": [
+              "Backup Success Rate",
+              "Average Recovery Time",
+              "Data Loss Incidents"
+            ]
+          },
+          {
+            "name": "Capacity Planning Report",
+            "description": "Evaluates the capacity of IT resources and forecasts future needs.",
+            "required_fields": [
+              "Resource Type",
+              "Current Usage",
+              "Forecasted Demand",
+              "Date Range"
+            ],
+            "optional_fields": [
+              "Historical Trends",
+              "Usage Thresholds",
+              "Growth Rate"
+            ],
+            "metrics": [
+              "Capacity Utilization",
+              "Forecast Accuracy",
+              "Growth Rate"
+            ]
+          }
+        ],
+        "errorMessage": "Please select a valid request type."
+      }
+    },
+    "timePeriod": {
+      "description": "Ask for the reporting period or request duration.",
+      "question": "For what time period do you need the report? Options include Daily, Weekly, Monthly, etc.",
+      "validations": {
+        "required": true,
+        "options": [
+          "Daily",
+          "Weekly",
+          "Monthly",
+          "Quarterly",
+          "Yearly",
+          "Custom Date Range"
+        ],
+        "customDateRangeHandling": "If 'Custom Date Range' is selected, please provide the start and end dates."
+      }
+    },
+    "visualization": {
+      "description": "Inquire about the visualization preference",
+      "question": "How would you like the data to be visualized? Bar chart, Pie chart, Line graph, or Table?",
+      "validations": {
+        "required": true,
+        "options": [
+          {
+            "name": "Bar Chart",
+            "description": "A chart that displays categorical data with rectangular bars.",
+            "subtypes": [
+              {
+                "type": "Vertical Bar",
+                "description": "Displays data in vertical bars to compare different categories."
+              },
+              {
+                "type": "Horizontal Bar",
+                "description": "Displays data in horizontal bars for comparative analysis."
+              },
+              {
+                "type": "Stacked Bar",
+                "description": "Displays the total of different sub-categories in a stacked format."
+              }
+            ],
+            "details": {
+              "2D_3D": ["2D", "3D"],
+              "colors": "Single or Multi-color options",
+              "animations": ["Static", "Animated"]
+            }
+          },
+          {
+            "name": "Pie Chart",
+            "description": "A circular chart divided into slices to illustrate numerical proportions.",
+            "subtypes": [
+              {
+                "type": "Standard Pie",
+                "description": "Displays proportional data as slices of a pie."
+              },
+              {
+                "type": "3D Pie",
+                "description": "Adds depth to the slices to create a 3D effect."
+              },
+              {
+                "type": "Donut Pie",
+                "description": "Similar to a pie chart but with a hole in the center."
+              }
+            ],
+            "details": {
+              "labels": ["Percentage", "Absolute Values"],
+              "interactivity": ["Drill Down", "Hover"],
+              "colors": "Single or Multi-color slices"
+            }
+          },
+          {
+            "name": "Line Graph",
+            "description": "Displays data points connected by a line, often used for trends over time.",
+            "subtypes": [
+              {
+                "type": "Standard Line",
+                "description": "Connects data points with straight lines."
+              },
+              {
+                "type": "Curved Line",
+                "description": "Connects data points with smooth, curved lines."
+              },
+              {
+                "type": "Area Line",
+                "description": "Fills the area beneath the line for cumulative data."
+              }
+            ],
+            "details": {
+              "2D_3D": ["2D", "3D"],
+              "trendline_options": ["Linear", "Moving Average"],
+              "markers": ["Points", "No Points"],
+              "animations": ["Static", "Animated"]
+            }
+          },
+          {
+            "name": "Scatter Plot",
+            "description": "A graph with points plotted to represent values for two variables.",
+            "subtypes": [
+              {
+                "type": "Standard Scatter",
+                "description": "Simple scatter plot with points representing two variables."
+              },
+              {
+                "type": "Bubble Chart",
+                "description": "Similar to scatter plot but adds size to the points to represent a third variable."
+              }
+            ],
+            "details": {
+              "axis_labels": ["X-Axis", "Y-Axis"],
+              "colors": "Single or Multi-color points",
+              "bubble_size": "Represents additional variable"
+            }
+          },
+          {
+            "name": "Heatmap",
+            "description": "A matrix representation where values are represented by color gradients.",
+            "subtypes": [
+              {
+                "type": "Standard Heatmap",
+                "description": "Displays data values with color intensity."
+              },
+              {
+                "type": "Clustered Heatmap",
+                "description": "Groups similar values into clusters."
+              }
+            ],
+            "details": {
+              "color_range": ["Low to High", "High to Low"],
+              "interactivity": ["Drill Down", "Hover"],
+              "grid_size": "Adjustable grid resolution"
+            }
+          }
+        ],
+        "errorMessage": "Please choose a valid visualization type."
+      },
+      "responseValidation": "Make sure the selected visualization is applicable to the report data."
+    },
+
+    "metrics": {
+      "description": "Ask the user which key metrics they would like to include.",
+      "question": "Which IT metrics should be included in the report? Common metrics include Service Availability, Incident Response Time, MTTR, etc.",
+      "validations": {
+        "required": true,
+        "options": [
+          "Service Availability",
+          "Incident Response Time",
+          "Mean Time to Resolution (MTTR)",
+          "Change Success Rate",
+          "Customer Satisfaction Score (CSAT)",
+          "License Compliance Rate",
+          "Backup Success Rate",
+          "Network Downtime",
+          "User Access Violations",
+          "Vulnerability Remediation Rate"
+        ],
+        "errorMessage": "Please select at least one metric."
+      },
+      "responseValidation": "Verify that the selected metrics are aligned with the IT department's objectives and report scope."
+    },
+
+    "validationRules": {
+      "general": {
+        "rules": [
+          "Ensure that responses align with the Finance and Accounting department's domain and the report type requested."
+        ]
+      },
+      "errorHandling": {
+        "prompts": {
+          "invalidInput": "Your input doesn't seem relevant to Finance and Accounting. Could you please provide a valid response?",
+          "retryPrompt": "Can you clarify your request? Let's ensure the report meets your needs."
+        }
+      }
+    },
+    "summary_format": {
+      "language": "Plain English",
+      "key_points": [
+        "Report Type",
+        "Visualization Type",
+        "Date Range",
+        "Metrics",
+        "Additional Comments"
+      ]
+    }
+  }
+}

@@ -1,0 +1,430 @@
+{
+  "department": "Legal and Compliance",
+  "conversationFlow": {
+    "initiate": {
+      "prompt": "What type of legal or compliance report are you looking to generate?",
+      "errorHandling": "Ensure you are selecting a report that aligns with legal or regulatory requirements."
+    },
+    "reportType": {
+      "description": "Ask the user to specify the type of legal or compliance report.",
+      "question": "What kind of report would you like? Options include Contract Summary, Litigation Report, Compliance Audit, etc.",
+      "validations": {
+        "required": true,
+        "options": [
+          "Contract Summary Report",
+          "Litigation Report",
+          "Compliance Audit Report",
+          "Regulatory Filing Report",
+          "Risk Assessment Report",
+          "Code of Conduct Violation Report",
+          "Data Privacy Report",
+          "Anti-Money Laundering (AML) Report",
+          "Whistleblower Report",
+          "Intellectual Property Report",
+          "Policy Review Report"
+        ],
+        "option_details": [
+          {
+            "name": "Contract Summary Report",
+            "description": "Summarizes details of all active or expired contracts.",
+            "required_fields": [
+              "Contract Parties",
+              "Effective Date",
+              "Expiration Date",
+              "Key Clauses",
+              "Status"
+            ],
+            "optional_fields": [
+              "Renewal Terms",
+              "Termination Clause",
+              "Payment Terms"
+            ],
+            "metrics": [
+              "Number of Active Contracts",
+              "Expiring Contracts",
+              "Renewal Rate"
+            ]
+          },
+          {
+            "name": "Litigation Report",
+            "description": "Details ongoing and closed litigations involving the organization.",
+            "required_fields": [
+              "Case Title",
+              "Court Name",
+              "Filing Date",
+              "Case Status",
+              "Involved Parties"
+            ],
+            "optional_fields": [
+              "Legal Counsel",
+              "Settlement Amount",
+              "Next Hearing Date"
+            ],
+            "metrics": [
+              "Active Cases",
+              "Resolved Cases",
+              "Total Legal Expenses"
+            ]
+          },
+          {
+            "name": "Compliance Audit Report",
+            "description": "Summarizes the results of an internal or external compliance audit.",
+            "required_fields": [
+              "Audit Scope",
+              "Findings",
+              "Compliance Status",
+              "Date of Audit"
+            ],
+            "optional_fields": [
+              "Corrective Actions",
+              "Audit Recommendations",
+              "Risk Rating"
+            ],
+            "metrics": [
+              "Compliance Score",
+              "Number of Non-Conformities",
+              "Risk Level"
+            ]
+          },
+          {
+            "name": "Regulatory Filing Report",
+            "description": "Tracks regulatory filings and submissions.",
+            "required_fields": [
+              "Filing Type",
+              "Submission Date",
+              "Regulatory Body",
+              "Status"
+            ],
+            "optional_fields": [
+              "Follow-up Actions",
+              "Next Submission Date",
+              "Penalties (if any)"
+            ],
+            "metrics": ["Total Filings", "Overdue Filings", "Compliance Rate"]
+          },
+          {
+            "name": "Risk Assessment Report",
+            "description": "Identifies risks and mitigation strategies.",
+            "required_fields": [
+              "Risk Description",
+              "Risk Level",
+              "Mitigation Plan",
+              "Assessment Date"
+            ],
+            "optional_fields": [
+              "Impact Score",
+              "Probability",
+              "Contingency Plan"
+            ],
+            "metrics": [
+              "High-Risk Items",
+              "Risk Mitigation Progress",
+              "Residual Risk"
+            ]
+          },
+          {
+            "name": "Code of Conduct Violation Report",
+            "description": "Documents reported violations of the company’s code of conduct.",
+            "required_fields": [
+              "Violation Description",
+              "Reported By",
+              "Date of Violation",
+              "Status"
+            ],
+            "optional_fields": ["Action Taken", "Penalty", "Follow-up Actions"],
+            "metrics": [
+              "Total Violations",
+              "Resolved Violations",
+              "Pending Cases"
+            ]
+          },
+          {
+            "name": "Data Privacy Report",
+            "description": "Tracks data privacy compliance and incidents.",
+            "required_fields": [
+              "Incident Type",
+              "Date of Incident",
+              "Status",
+              "Mitigation Actions"
+            ],
+            "optional_fields": [
+              "Affected Parties",
+              "Root Cause Analysis",
+              "Reporting Authority"
+            ],
+            "metrics": [
+              "Privacy Incidents",
+              "Resolved Incidents",
+              "Compliance Rate"
+            ]
+          },
+          {
+            "name": "Anti-Money Laundering (AML) Report",
+            "description": "Tracks AML compliance and suspicious activity.",
+            "required_fields": [
+              "Transaction Type",
+              "Suspicious Activity Report",
+              "Reporting Date"
+            ],
+            "optional_fields": [
+              "Involved Parties",
+              "Follow-up Actions",
+              "Regulatory Notifications"
+            ],
+            "metrics": [
+              "Suspicious Transactions",
+              "Total AML Filings",
+              "Compliance Score"
+            ]
+          },
+          {
+            "name": "Whistleblower Report",
+            "description": "Summarizes whistleblower complaints and their status.",
+            "required_fields": [
+              "Complaint Description",
+              "Reported By",
+              "Date of Report",
+              "Status"
+            ],
+            "optional_fields": [
+              "Follow-up Actions",
+              "Outcome",
+              "Department Involved"
+            ],
+            "metrics": [
+              "Total Complaints",
+              "Resolved Complaints",
+              "Pending Complaints"
+            ]
+          },
+          {
+            "name": "Intellectual Property Report",
+            "description": "Tracks the company’s intellectual property portfolio.",
+            "required_fields": [
+              "Patent Number",
+              "Trademark",
+              "Filing Date",
+              "Status"
+            ],
+            "optional_fields": [
+              "Renewal Date",
+              "Owner Department",
+              "Legal Counsel"
+            ],
+            "metrics": [
+              "Total Patents",
+              "Active Trademarks",
+              "Expired IP Assets"
+            ]
+          },
+          {
+            "name": "Policy Review Report",
+            "description": "Tracks the status and outcome of policy reviews.",
+            "required_fields": [
+              "Policy Name",
+              "Review Date",
+              "Status",
+              "Review Outcome"
+            ],
+            "optional_fields": [
+              "Reviewer Comments",
+              "Amendments",
+              "Effective Date"
+            ],
+            "metrics": [
+              "Policies Reviewed",
+              "Amended Policies",
+              "Pending Reviews"
+            ]
+          }
+        ],
+        "errorMessage": "Please select a valid report type relevant to the Legal and Compliance department."
+      },
+      "responseValidation": "Ensure the selected report aligns with legal or compliance objectives."
+    },
+    "timePeriod": {
+      "description": "Ask for the reporting period.",
+      "question": "For what time period do you need the report? Options include Daily, Weekly, Monthly, etc.",
+      "validations": {
+        "required": true,
+        "options": [
+          "Daily",
+          "Weekly",
+          "Monthly",
+          "Quarterly",
+          "Yearly",
+          "Custom Date Range"
+        ],
+        "customDateRangeHandling": "If 'Custom Date Range' is selected, ask for the start and end dates."
+      },
+      "responseValidation": "Check if the selected time period matches the requested report type."
+    },
+
+    "visualization": {
+      "description": "Inquire about the visualization preference",
+      "question": "How would you like the data to be visualized? Bar chart, Pie chart, Line graph, or Table?",
+      "validations": {
+        "required": true,
+        "options": [
+          {
+            "name": "Bar Chart",
+            "description": "A chart that displays categorical data with rectangular bars.",
+            "subtypes": [
+              {
+                "type": "Vertical Bar",
+                "description": "Displays data in vertical bars to compare different categories."
+              },
+              {
+                "type": "Horizontal Bar",
+                "description": "Displays data in horizontal bars for comparative analysis."
+              },
+              {
+                "type": "Stacked Bar",
+                "description": "Displays the total of different sub-categories in a stacked format."
+              }
+            ],
+            "details": {
+              "2D_3D": ["2D", "3D"],
+              "colors": "Single or Multi-color options",
+              "animations": ["Static", "Animated"]
+            }
+          },
+          {
+            "name": "Pie Chart",
+            "description": "A circular chart divided into slices to illustrate numerical proportions.",
+            "subtypes": [
+              {
+                "type": "Standard Pie",
+                "description": "Displays proportional data as slices of a pie."
+              },
+              {
+                "type": "3D Pie",
+                "description": "Adds depth to the slices to create a 3D effect."
+              },
+              {
+                "type": "Donut Pie",
+                "description": "Similar to a pie chart but with a hole in the center."
+              }
+            ],
+            "details": {
+              "labels": ["Percentage", "Absolute Values"],
+              "interactivity": ["Drill Down", "Hover"],
+              "colors": "Single or Multi-color slices"
+            }
+          },
+          {
+            "name": "Line Graph",
+            "description": "Displays data points connected by a line, often used for trends over time.",
+            "subtypes": [
+              {
+                "type": "Standard Line",
+                "description": "Connects data points with straight lines."
+              },
+              {
+                "type": "Curved Line",
+                "description": "Connects data points with smooth, curved lines."
+              },
+              {
+                "type": "Area Line",
+                "description": "Fills the area beneath the line for cumulative data."
+              }
+            ],
+            "details": {
+              "2D_3D": ["2D", "3D"],
+              "trendline_options": ["Linear", "Moving Average"],
+              "markers": ["Points", "No Points"],
+              "animations": ["Static", "Animated"]
+            }
+          },
+          {
+            "name": "Scatter Plot",
+            "description": "A graph with points plotted to represent values for two variables.",
+            "subtypes": [
+              {
+                "type": "Standard Scatter",
+                "description": "Simple scatter plot with points representing two variables."
+              },
+              {
+                "type": "Bubble Chart",
+                "description": "Similar to scatter plot but adds size to the points to represent a third variable."
+              }
+            ],
+            "details": {
+              "axis_labels": ["X-Axis", "Y-Axis"],
+              "colors": "Single or Multi-color points",
+              "bubble_size": "Represents additional variable"
+            }
+          },
+          {
+            "name": "Heatmap",
+            "description": "A matrix representation where values are represented by color gradients.",
+            "subtypes": [
+              {
+                "type": "Standard Heatmap",
+                "description": "Displays data values with color intensity."
+              },
+              {
+                "type": "Clustered Heatmap",
+                "description": "Groups similar values into clusters."
+              }
+            ],
+            "details": {
+              "color_range": ["Low to High", "High to Low"],
+              "interactivity": ["Drill Down", "Hover"],
+              "grid_size": "Adjustable grid resolution"
+            }
+          }
+        ],
+        "errorMessage": "Please choose a valid visualization type."
+      },
+      "responseValidation": "Make sure the selected visualization is applicable to the report data."
+    },
+
+    "metrics": {
+      "description": "Ask the user which key metrics they would like to include.",
+      "question": "Which legal metrics should be included in the report? Common metrics include Contract Closure Rate, Legal Spend, Compliance Rate, etc.",
+      "validations": {
+        "required": true,
+        "options": [
+          "Contract Closure Rate",
+          "Legal Spend",
+          "Compliance",
+          "Rate",
+          "Litigation Success Rate",
+          "Regulatory Filings Timeliness",
+          "Number of Active Cases",
+          "External Counsel Cost",
+          "Risk Mitigation Index",
+          "Intellectual Property (IP) Filings",
+          "Contract Review Turnaround Time"
+        ],
+        "errorMessage": "Please select at least one metric."
+      },
+      "responseValidation": "Verify that the selected metrics are appropriate for the legal department's operations and report scope."
+    },
+
+    "validationRules": {
+      "general": {
+        "rules": [
+          "Ensure that responses align with the Finance and Accounting department's domain and the report type requested."
+        ]
+      },
+      "errorHandling": {
+        "prompts": {
+          "invalidInput": "Your input doesn't seem relevant to Finance and Accounting. Could you please provide a valid response?",
+          "retryPrompt": "Can you clarify your request? Let's ensure the report meets your needs."
+        }
+      }
+    },
+    "summary_format": {
+      "language": "Plain English",
+      "key_points": [
+        "Report Type",
+        "Visualization Type",
+        "Date Range",
+        "Metrics",
+        "Additional Comments"
+      ]
+    }
+  }
+}

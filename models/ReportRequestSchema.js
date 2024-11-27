@@ -25,8 +25,8 @@ const reportRequestSchema = new mongoose.Schema({
   submittedAt: { type: Date, default: Date.now },
   status: {
     type: String,
-    enum: ["pending", "processed"],
-    default: "pending",
+    enum: ["pending", "processed","not sent","resubmit"],
+    default: "not sent",
   },
 });
 

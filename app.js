@@ -7,12 +7,13 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 
 const userRoutes = require("./routes/userRoutes.js");
+const chatLogRoutes = require("./routes/ChatLogRoutes.js");
 
 const app = express();
-const port = process.env.PORT || 6001;
 
 dotenv.config({ path: "./config.env" });
 
+const port = process.env.PORT || 6001;
 const uri = process.env.DATABASE_CONNECTION_STRING;
 
 const mongoDBstore = new MongoDBStore({
@@ -46,7 +47,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // SESSIONS HANDLER
-const MAX_AGE = 1000 * 60 * 3; // 30 minutes
+const MAX_AGE = 1000 * 60 * 30; // 30 minutes
 app.use(
   session({
     secret: "DUB_NATION",
@@ -63,6 +64,7 @@ app.use(
 );
 
 app.use("/api", userRoutes);
+app.use('/api',chatLogRoutes);
 
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);

@@ -1,0 +1,574 @@
+{
+    "department": "Finance and Accounting",
+    "conversationFlow": {
+        "initiate": {
+            "prompt": "What type of report are you looking to generate?",
+            "errorHandling": "Please make sure you are selecting the correct department related to financial reports."
+        },
+        "reportType": {
+            "description": "Ask the user to specify the type of financial report",
+            "question": "What kind of financial report would you like? Options include Profit and Loss, Balance Sheet, Cash Flow, etc.",
+            "validations": {
+                "required": true,
+                "options": [
+                    "Profit and Loss Statement",
+                    "Balance Sheet",
+                    "Cash Flow Statement",
+                    "Budget Report",
+                    "Accounts Payable Report",
+                    "Accounts Receivable Report",
+                    "Expense Report",
+                    "Tax Report",
+                    "Audit Report",
+                    "Variance Report",
+                    "Revenue Report"
+                ],
+                "option_details": [
+                    {
+                        "name": "Profit and Loss Statement",
+                        "description": "A financial statement summarizing revenues, costs, and expenses incurred during a specific period.",
+                        "required_fields": [
+                            "Revenue",
+                            "Expenses",
+                            "Net Profit",
+                            "Date Range"
+                        ],
+                        "optional_fields": [
+                            "Operating Income",
+                            "Cost of Goods Sold",
+                            "Gross Profit",
+                            "Earnings Before Tax (EBT)",
+                            "Earnings Before Interest and Taxes (EBIT)",
+                            "Profit Margin"
+                        ],
+                        "metrics": [
+                            "Revenue",
+                            "Net Profit",
+                            "Gross Profit",
+                            "EBIT",
+                            "Profit Margin"
+                        ]
+                    },
+                    {
+                        "name": "Balance Sheet",
+                        "description": "A snapshot of the company’s financial position at a specific point in time, detailing assets, liabilities, and equity.",
+                        "required_fields": [
+                            "Assets",
+                            "Liabilities",
+                            "Equity",
+                            "Date Range"
+                        ],
+                        "optional_fields": [
+                            "Current Assets",
+                            "Non-Current Assets",
+                            "Current Liabilities",
+                            "Long-term Liabilities",
+                            "Shareholder's Equity"
+                        ],
+                        "metrics": [
+                            "Total Assets",
+                            "Total Liabilities",
+                            "Net Equity",
+                            "Current Ratio"
+                        ]
+                    },
+                    {
+                        "name": "Cash Flow Statement",
+                        "description": "A report detailing the inflows and outflows of cash over a specific period.",
+                        "required_fields": [
+                            "Operating Cash Flow",
+                            "Investing Cash Flow",
+                            "Financing Cash Flow",
+                            "Net Cash Flow",
+                            "Date Range"
+                        ],
+                        "optional_fields": [
+                            "Non-Cash Items",
+                            "Depreciation",
+                            "Capital Expenditures"
+                        ],
+                        "metrics": [
+                            "Cash Flow from Operations",
+                            "Free Cash Flow",
+                            "Cash Flow from Financing"
+                        ]
+                    },
+                    {
+                        "name": "Budget Report",
+                        "description": "A report that compares the company’s planned budget with actual financial performance.",
+                        "required_fields": [
+                            "Budgeted Amount",
+                            "Actual Amount",
+                            "Variance",
+                            "Date Range"
+                        ],
+                        "optional_fields": [
+                            "Department",
+                            "Cost Centers",
+                            "Overheads"
+                        ],
+                        "metrics": [
+                            "Budget vs Actual",
+                            "Variance Analysis",
+                            "Cost Overruns"
+                        ]
+                    },
+                    {
+                        "name": "Accounts Payable Report",
+                        "description": "A report that tracks money owed by the company to its suppliers and vendors.",
+                        "required_fields": [
+                            "Total Payables",
+                            "Payment Due Dates",
+                            "Vendor Details",
+                            "Outstanding Amounts",
+                            "Date Range"
+                        ],
+                        "optional_fields": [
+                            "Aging Payables",
+                            "Payment Terms",
+                            "Discounts Received"
+                        ],
+                        "metrics": [
+                            "Total Outstanding Payables",
+                            "Average Payment Period"
+                        ]
+                    },
+                    {
+                        "name": "Accounts Receivable Report",
+                        "description": "A report that tracks money owed to the company by its customers.",
+                        "required_fields": [
+                            "Total Receivables",
+                            "Due Dates",
+                            "Customer Details",
+                            "Aging Receivables",
+                            "Outstanding Balances"
+                        ],
+                        "optional_fields": [
+                            "Payment Terms",
+                            "Collections Status",
+                            "Credit Limit"
+                        ],
+                        "metrics": [
+                            "Total Outstanding Receivables",
+                            "Average Collection Period"
+                        ]
+                    },
+                    {
+                        "name": "Expense Report",
+                        "description": "A detailed account of expenses incurred by the company during a specific period.",
+                        "required_fields": [
+                            "Expense Categories",
+                            "Total Expenses",
+                            "Date Range",
+                            "Department"
+                        ],
+                        "optional_fields": [
+                            "Employee Reimbursements",
+                            "Operating Expenses",
+                            "Administrative Expenses"
+                        ],
+                        "metrics": [
+                            "Total Operating Expenses",
+                            "Administrative Costs",
+                            "Travel Expenses"
+                        ]
+                    },
+                    {
+                        "name": "Tax Report",
+                        "description": "A report detailing the company’s tax liabilities, tax credits, and tax payments.",
+                        "required_fields": [
+                            "Taxable Income",
+                            "Tax Liabilities",
+                            "Tax Credits",
+                            "Total Taxes Paid",
+                            "Date Range"
+                        ],
+                        "optional_fields": [
+                            "Deferred Tax",
+                            "Tax Deductions",
+                            "Tax Refunds"
+                        ],
+                        "metrics": [
+                            "Effective Tax Rate",
+                            "Total Tax Paid",
+                            "Taxable Income"
+                        ]
+                    },
+                    {
+                        "name": "Audit Report",
+                        "description": "A report summarizing the findings of an internal or external audit.",
+                        "required_fields": [
+                            "Audit Findings",
+                            "Compliance Issues",
+                            "Recommendations",
+                            "Date Range"
+                        ],
+                        "optional_fields": [
+                            "Audit Type",
+                            "Department",
+                            "Risk Assessment"
+                        ],
+                        "metrics": [
+                            "Number of Compliance Issues",
+                            "Risk Rating"
+                        ]
+                    },
+                    {
+                        "name": "Variance Report",
+                        "description": "A report that analyzes the difference between planned and actual financial performance.",
+                        "required_fields": [
+                            "Budgeted Amount",
+                            "Actual Amount",
+                            "Variance",
+                            "Date Range"
+                        ],
+                        "optional_fields": [
+                            "Department",
+                            "Cost Centers",
+                            "Variance Percentage"
+                        ],
+                        "metrics": [
+                            "Variance",
+                            "Variance Percentage",
+                            "Overheads"
+                        ]
+                    },
+                    {
+                        "name": "Revenue Report",
+                        "description": "A report that provides details on the company’s total revenue over a specific period.",
+                        "required_fields": [
+                            "Total Revenue",
+                            "Revenue by Source",
+                            "Revenue by Product",
+                            "Date Range"
+                        ],
+                        "optional_fields": [
+                            "Geographical Breakdown",
+                            "Customer Segments"
+                        ],
+                        "metrics": [
+                            "Total Revenue",
+                            "Revenue Growth Rate",
+                            "Revenue by Region"
+                        ]
+                    }
+                ],
+                "errorMessage": "Please select a valid report type from the available options."
+            },
+            "responseValidation": "Ensure that the selected report type is relevant to the Finance and Accounting department."
+        },
+        "timePeriod": {
+            "description": "Ask for the reporting period",
+            "question": "For what time period do you need the report? You can select from Daily, Weekly, Monthly, etc.",
+            "validations": {
+                "required": true,
+                "options": [
+                    "Daily",
+                    "Weekly",
+                    "Monthly",
+                    "Quarterly",
+                    "Yearly",
+                    "Custom Date Range"
+                ],
+                "customDateRangeHandling": "If 'Custom Date Range' is selected, ask for the start and end dates."
+            },
+            "responseValidation": "Check if the selected time period matches the requested report type."
+        },
+        "visualization": {
+            "description": "Inquire about the visualization preference",
+            "question": "How would you like the data to be visualized? Bar chart, Pie chart, Line graph, or Table?",
+            "validations": {
+                "required": true,
+                "options": [
+                    {
+                        "name": "Bar Chart",
+                        "description": "A chart that displays categorical data with rectangular bars.",
+                        "subtypes": [
+                            {
+                                "type": "Vertical Bar",
+                                "description": "Displays data in vertical bars to compare different categories."
+                            },
+                            {
+                                "type": "Horizontal Bar",
+                                "description": "Displays data in horizontal bars for comparative analysis."
+                            },
+                            {
+                                "type": "Stacked Bar",
+                                "description": "Displays the total of different sub-categories in a stacked format."
+                            }
+                        ],
+                        "details": {
+                            "2D_3D": [
+                                "2D",
+                                "3D"
+                            ],
+                            "colors": "Single or Multi-color options",
+                            "animations": [
+                                "Static",
+                                "Animated"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "Pie Chart",
+                        "description": "A circular chart divided into slices to illustrate numerical proportions.",
+                        "subtypes": [
+                            {
+                                "type": "Standard Pie",
+                                "description": "Displays proportional data as slices of a pie."
+                            },
+                            {
+                                "type": "3D Pie",
+                                "description": "Adds depth to the slices to create a 3D effect."
+                            },
+                            {
+                                "type": "Donut Pie",
+                                "description": "Similar to a pie chart but with a hole in the center."
+                            }
+                        ],
+                        "details": {
+                            "labels": [
+                                "Percentage",
+                                "Absolute Values"
+                            ],
+                            "interactivity": [
+                                "Drill Down",
+                                "Hover"
+                            ],
+                            "colors": "Single or Multi-color slices"
+                        }
+                    },
+                    {
+                        "name": "Line Graph",
+                        "description": "Displays data points connected by a line, often used for trends over time.",
+                        "subtypes": [
+                            {
+                                "type": "Standard Line",
+                                "description": "Connects data points with straight lines."
+                            },
+                            {
+                                "type": "Curved Line",
+                                "description": "Connects data points with smooth, curved lines."
+                            },
+                            {
+                                "type": "Area Line",
+                                "description": "Fills the area beneath the line for cumulative data."
+                            }
+                        ],
+                        "details": {
+                            "2D_3D": [
+                                "2D",
+                                "3D"
+                            ],
+                            "trendline_options": [
+                                "Linear",
+                                "Moving Average"
+                            ],
+                            "markers": [
+                                "Points",
+                                "No Points"
+                            ],
+                            "animations": [
+                                "Static",
+                                "Animated"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "Scatter Plot",
+                        "description": "A graph with points plotted to represent values for two variables.",
+                        "subtypes": [
+                            {
+                                "type": "Standard Scatter",
+                                "description": "Simple scatter plot with points representing two variables."
+                            },
+                            {
+                                "type": "Bubble Chart",
+                                "description": "Similar to scatter plot but adds size to the points to represent a third variable."
+                            }
+                        ],
+                        "details": {
+                            "axis_labels": [
+                                "X-Axis",
+                                "Y-Axis"
+                            ],
+                            "colors": "Single or Multi-color points",
+                            "bubble_size": "Represents additional variable"
+                        }
+                    },
+                    {
+                        "name": "Heatmap",
+                        "description": "A matrix representation where values are represented by color gradients.",
+                        "subtypes": [
+                            {
+                                "type": "Standard Heatmap",
+                                "description": "Displays data values with color intensity."
+                            },
+                            {
+                                "type": "Clustered Heatmap",
+                                "description": "Groups similar values into clusters."
+                            }
+                        ],
+                        "details": {
+                            "color_range": [
+                                "Low to High",
+                                "High to Low"
+                            ],
+                            "interactivity": [
+                                "Drill Down",
+                                "Hover"
+                            ],
+                            "grid_size": "Adjustable grid resolution"
+                        }
+                    }
+                ],
+                "errorMessage": "Please choose a valid visualization type."
+            },
+            "responseValidation": "Make sure the selected visualization is applicable to the report data."
+        },
+        "metrics": {
+            "description": "Ask the user which key metrics they would like to include",
+            "question": "Which financial metrics should be included in the report? Common metrics include Revenue, Expenses, Net Profit, etc.",
+            "validations": {
+                "required": true,
+                "options": [
+                    "Revenue",
+                    "Expenses",
+                    "Net Profit",
+                    "Gross Profit",
+                    "Total Assets",
+                    "Liabilities",
+                    "Equity",
+                    "Operating Costs",
+                    "Cash Reserves",
+                    "Debts",
+                    "Income Tax"
+                ],
+                "errorMessage": "Please select at least one metric."
+            },
+            "responseValidation": "Verify that the selected metrics are relevant for the chosen report type."
+        },
+        "filters": {
+            "description": "Ask the user if they want to apply any filters",
+            "question": "Would you like to apply any filters? You can filter by Department, Region, Product Line, Customer Type, etc.",
+            "validations": {
+                "required": false,
+                "options": {
+                    "byDepartment": [
+                        "Finance",
+                        "Sales",
+                        "Marketing",
+                        "Operations",
+                        "IT",
+                        "HR"
+                    ],
+                    "byRegion": [
+                        "North America",
+                        "Europe",
+                        "Asia-Pacific",
+                        "Middle East",
+                        "Africa"
+                    ],
+                    "byProductLine": [
+                        "Product A",
+                        "Product B",
+                        "Product C",
+                        "Product D"
+                    ],
+                    "byCustomerType": [
+                        "Retail",
+                        "Corporate",
+                        "Government",
+                        "SMEs"
+                    ],
+                    "byExpenseCategory": [
+                        "Operating Expense",
+                        "Capital Expense",
+                        "Miscellaneous Expense"
+                    ],
+                    "byPaymentStatus": [
+                        "Paid",
+                        "Pending",
+                        "Overdue"
+                    ]
+                },
+                "errorMessage": "Please provide valid filter criteria."
+            },
+            "responseValidation": "Ensure that the filters are applicable to the Finance and Accounting data."
+        },
+        "subReports": {
+            "description": "Check if any sub-reports are needed",
+            "question": "Would you like any detailed breakdowns or sub-reports? (e.g., Department-wise Breakdown, Region-wise Breakdown)",
+            "validations": {
+                "required": false,
+                "options": [
+                    "Department-wise Breakdown",
+                    "Region-wise Breakdown",
+                    "Expense Category Breakdown",
+                    "Monthly Performance",
+                    "Customer Type Breakdown"
+                ],
+                "errorMessage": "Please select a valid sub-report type."
+            },
+            "responseValidation": "Make sure the sub-report is compatible with the main report type."
+        },
+        "currency": {
+            "description": "Ask for the preferred currency format",
+            "question": "Which currency format would you like the report to be in? (USD, EUR, INR, etc.)",
+            "validations": {
+                "required": true,
+                "options": [
+                    "USD",
+                    "EUR",
+                    "INR",
+                    "GBP",
+                    "JPY",
+                    "CNY",
+                    "Custom"
+                ],
+                "errorMessage": "Please select a valid currency format."
+            },
+            "responseValidation": "Verify if the currency is appropriate for the region or data source."
+        },
+        "comparisons": {
+            "description": "Inquire if comparisons are needed",
+            "question": "Do you want to include any comparisons? (e.g., Year-over-Year, Month-over-Month, etc.)",
+            "validations": {
+                "required": false,
+                "options": [
+                    "Year-over-Year Comparison",
+                    "Month-over-Month Comparison",
+                    "Forecast vs Actual",
+                    "Planned vs Actual Budget",
+                    "Quarterly Performance"
+                ],
+                "errorMessage": "Please select a valid comparison option."
+            },
+            "responseValidation": "Ensure that the comparison makes sense for the selected metrics and time period."
+        }
+    },
+    "validationRules": {
+        "general": {
+            "rules": [
+                "Ensure that responses align with the Finance and Accounting department's domain and the report type requested."
+            ]
+        },
+        "errorHandling": {
+            "prompts": {
+                "invalidInput": "Your input doesn't seem relevant to Finance and Accounting. Could you please provide a valid response?",
+                "retryPrompt": "Can you clarify your request? Let's ensure the report meets your needs."
+            }
+        }
+    },
+    "summary_format": {
+        "language": "Plain English",
+        "key_points": [
+            "Report Type",
+            "Visualization Type",
+            "Selected Filters",
+            "Date Range",
+            "Metrics",
+            "Additional Comments"
+        ]
+    }
+}

@@ -1,0 +1,408 @@
+{
+    "department": "Customer Service",
+    "conversationFlow": {
+        "initiate": {
+            "prompt": "What type of report are you looking to generate?",
+            "errorHandling": "Please make sure you are selecting the correct department related to customer service reports."
+        },
+        "report_type": {
+            "description": "Ask the user what type of customer service report they need",
+            "question": "What kind of customer service report are you looking for? Examples include Customer Feedback Summary, Agent Performance Report, Issue Resolution Analysis, etc.",
+            "validations": {
+                "required": true,
+                "options": [
+                    "Customer Feedback Summary",
+                    "Agent Performance Report",
+                    "Issue Resolution Analysis",
+                    "Call Center Statistics",
+                    "Customer Satisfaction (CSAT) Report",
+                    "First Response Time (FRT) Report"
+                ],
+                "option_details": [
+                    {
+                        "name": "Customer Feedback Summary",
+                        "description": "A summary report aggregating customer feedback collected over a specific period.",
+                        "required_fields": [
+                            "Feedback Source",
+                            "Customer Sentiment",
+                            "Date Range",
+                            "Number of Responses"
+                        ],
+                        "optional_fields": [
+                            "Product or Service",
+                            "Customer Demographics",
+                            "NPS (Net Promoter Score)",
+                            "Comments"
+                        ],
+                        "metrics": [
+                            "Customer Satisfaction Score",
+                            "Sentiment Analysis",
+                            "NPS",
+                            "Feedback Count"
+                        ]
+                    },
+                    {
+                        "name": "Agent Performance Report",
+                        "description": "A report evaluating the performance of customer service agents based on key metrics.",
+                        "required_fields": [
+                            "Agent Name",
+                            "Total Resolved Tickets",
+                            "Average Resolution Time",
+                            "Customer Feedback",
+                            "Date Range"
+                        ],
+                        "optional_fields": [
+                            "Tickets Escalated",
+                            "Agent Rating",
+                            "Tickets Reopened"
+                        ],
+                        "metrics": [
+                            "Resolution Time",
+                            "Customer Satisfaction",
+                            "Escalation Rate",
+                            "Reopen Rate"
+                        ]
+                    },
+                    {
+                        "name": "Issue Resolution Analysis",
+                        "description": "A detailed report analyzing the resolution of customer issues over a specific period.",
+                        "required_fields": [
+                            "Resolved Issues",
+                            "Resolution Time",
+                            "Resolution Method",
+                            "Date Range"
+                        ],
+                        "optional_fields": [
+                            "Issue Categories",
+                            "Customer Satisfaction",
+                            "Agent Involved"
+                        ],
+                        "metrics": [
+                            "Average Resolution Time",
+                            "Resolution Rate",
+                            "Customer Satisfaction",
+                            "Resolution Success Rate"
+                        ]
+                    },
+                    {
+                        "name": "Call Center Statistics",
+                        "description": "A report providing statistical analysis of call center operations and performance.",
+                        "required_fields": [
+                            "Total Calls Handled",
+                            "Average Call Duration",
+                            "Call Abandonment Rate",
+                            "Date Range"
+                        ],
+                        "optional_fields": [
+                            "First Call Resolution (FCR)",
+                            "Peak Call Times",
+                            "Hold Time",
+                            "Agent Shift Details"
+                        ],
+                        "metrics": [
+                            "Total Call Volume",
+                            "Abandonment Rate",
+                            "Average Call Duration",
+                            "FCR Rate"
+                        ]
+                    },
+                    {
+                        "name": "Customer Satisfaction (CSAT) Report",
+                        "description": "A report measuring customer satisfaction levels through post-interaction surveys.",
+                        "required_fields": [
+                            "CSAT Score",
+                            "Number of Responses",
+                            "Date Range"
+                        ],
+                        "optional_fields": [
+                            "Survey Comments",
+                            "Survey Method",
+                            "Customer Demographics"
+                        ],
+                        "metrics": [
+                            "Average CSAT Score",
+                            "Response Rate",
+                            "Survey Feedback",
+                            "CSAT Trend Over Time"
+                        ]
+                    },
+                    {
+                        "name": "First Response Time (FRT) Report",
+                        "description": "A report detailing the average time taken to respond to customer queries for the first time.",
+                        "required_fields": [
+                            "Average First Response Time",
+                            "Total Tickets",
+                            "Date Range"
+                        ],
+                        "optional_fields": [
+                            "Agent Involved",
+                            "Ticket Priority",
+                            "Customer Feedback"
+                        ],
+                        "metrics": [
+                            "Average FRT",
+                            "Total Responses",
+                            "FRT by Priority",
+                            "Customer Feedback on FRT"
+                        ]
+                    }
+                ],
+                "errorMessage": "Please select a valid report type."
+            },
+            "responseValidation": "Make sure the report type aligns with Customer Service department objectives."
+        },
+        "timePeriod": {
+            "description": "Ask for the reporting period",
+            "question": "For what time period do you need the report? You can select from Daily, Weekly, Monthly, etc.",
+            "validations": {
+                "required": true,
+                "options": [
+                    "Daily",
+                    "Weekly",
+                    "Monthly",
+                    "Quarterly",
+                    "Yearly",
+                    "Custom Date Range"
+                ],
+                "customDateRangeHandling": "If 'Custom Date Range' is selected, ask for the start and end dates."
+            },
+            "responseValidation": "Check if the selected time period matches the requested report type."
+        },
+        "visualization_type": {
+            "description": "Ask the user how they would like to visualize the data",
+            "question": "How would you prefer to visualize the data? Options include charts like Bar Chart, Pie Chart, Line Graph, etc.",
+            "validations": {
+                "required": true,
+                "options": [
+                    {
+                        "name": "Bar Chart",
+                        "description": "Represents data with rectangular bars.",
+                        "subtypes": [
+                            {
+                                "type": "Vertical Bar",
+                                "description": "Vertical representation of categories."
+                            },
+                            {
+                                "type": "Horizontal Bar",
+                                "description": "Horizontal representation of categories."
+                            },
+                            {
+                                "type": "Stacked Bar",
+                                "description": "Stacked values to show sub-categories."
+                            }
+                        ],
+                        "details": {
+                            "2D_3D": [
+                                "2D",
+                                "3D"
+                            ],
+                            "colors": "Single or Multi-color options",
+                            "animations": [
+                                "Static",
+                                "Animated"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "Pie Chart",
+                        "description": "Shows parts of a whole with circular slices.",
+                        "subtypes": [
+                            {
+                                "type": "Standard Pie",
+                                "description": "Displays simple data breakdown in slices."
+                            },
+                            {
+                                "type": "Donut Pie",
+                                "description": "Pie chart with a hole in the center."
+                            }
+                        ],
+                        "details": {
+                            "labels": [
+                                "Percentage",
+                                "Absolute Values"
+                            ],
+                            "interactivity": [
+                                "Drill Down",
+                                "Hover"
+                            ],
+                            "colors": "Single or Multi-color"
+                        }
+                    },
+                    {
+                        "name": "Line Graph",
+                        "description": "Tracks data trends over time.",
+                        "subtypes": [
+                            {
+                                "type": "Standard Line",
+                                "description": "Straight lines between data points."
+                            },
+                            {
+                                "type": "Curved Line",
+                                "description": "Smooth, curved lines between points."
+                            }
+                        ],
+                        "details": {
+                            "2D_3D": [
+                                "2D",
+                                "3D"
+                            ],
+                            "trendline_options": [
+                                "Linear",
+                                "Moving Average"
+                            ],
+                            "animations": [
+                                "Static",
+                                "Animated"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "Heatmap",
+                        "description": "Represents data through color gradients.",
+                        "subtypes": [
+                            {
+                                "type": "Standard Heatmap",
+                                "description": "Basic heatmap showing intensity."
+                            },
+                            {
+                                "type": "Clustered Heatmap",
+                                "description": "Groups similar data into clusters."
+                            }
+                        ],
+                        "details": {
+                            "color_range": [
+                                "Low to High",
+                                "High to Low"
+                            ],
+                            "interactivity": [
+                                "Hover",
+                                "Drill Down"
+                            ],
+                            "grid_size": "Adjustable grid resolution"
+                        }
+                    }
+                ],
+                "errorMessage": "Please choose a valid visualization type."
+            },
+            "responseValidation": "Make sure the selected visualization is relevant to the customer service data."
+        },
+        "metrics": {
+            "description": "Ask which key customer service metrics should be included",
+            "question": "Which customer service metrics would you like to include? Common metrics are CSAT, FRT, Average Handle Time, etc.",
+            "validations": {
+                "required": true,
+                "options": [
+                    "Customer Satisfaction (CSAT)",
+                    "First Response Time (FRT)",
+                    "Average Handle Time (AHT)",
+                    "Ticket Volume",
+                    "Resolution Rate",
+                    "Agent Utilization",
+                    "Customer Retention",
+                    "Net Promoter Score (NPS)",
+                    "Escalation Rate"
+                ],
+                "errorMessage": "Please select at least one metric."
+            },
+            "responseValidation": "Ensure the selected metrics are appropriate for the report."
+        },
+        "filters": {
+            "description": "Ask if any filters should be applied",
+            "question": "Would you like to apply any filters? Examples: By Channel, By Issue Type, By Agent.",
+            "validations": {
+                "required": false,
+                "options": {
+                    "byChannel": [
+                        "Email",
+                        "Phone",
+                        "Chat",
+                        "Social Media",
+                        "Forms"
+                    ],
+                    "byIssueType": [
+                        "Technical Support",
+                        "Billing",
+                        "Account Management",
+                        "Product Inquiry"
+                    ],
+                    "byAgent": [
+                        "Agent 1",
+                        "Agent 2",
+                        "Agent 3"
+                    ],
+                    "byPriority": [
+                        "Low",
+                        "Medium",
+                        "High"
+                    ],
+                    "byRegion": [
+                        "North America",
+                        "Europe",
+                        "Asia-Pacific",
+                        "Middle East",
+                        "Africa"
+                    ]
+                },
+                "errorMessage": "Please provide valid filter criteria."
+            },
+            "responseValidation": "Ensure that the filters are relevant to the report type."
+        },
+        "subReports": {
+            "description": "Ask if any detailed breakdowns or sub-reports are needed",
+            "question": "Would you like any detailed breakdowns or sub-reports? For example, Channel-wise Breakdown, Agent-wise Breakdown.",
+            "validations": {
+                "required": false,
+                "options": [
+                    "Channel-wise Breakdown",
+                    "Agent-wise Breakdown",
+                    "Issue Type Breakdown",
+                    "Region-wise Breakdown",
+                    "Monthly Performance"
+                ],
+                "errorMessage": "Please select a valid sub-report type."
+            },
+            "responseValidation": "Make sure the sub-report aligns with the main report."
+        },
+        "comparisons": {
+            "description": "Ask if comparisons are needed",
+            "question": "Do you want to include any comparisons? For example, Week-over-Week, Agent Performance Comparison.",
+            "validations": {
+                "required": false,
+                "options": [
+                    "Week-over-Week Comparison",
+                    "Month-over-Month Comparison",
+                    "Agent Performance Comparison",
+                    "Channel Performance Comparison",
+                    "Region-wise Comparison"
+                ],
+                "errorMessage": "Please select a valid comparison option."
+            },
+            "responseValidation": "Ensure that the comparison makes sense for the selected metrics and time period."
+        }
+    },
+    "validationRules": {
+        "general": {
+            "rules": [
+                "Ensure that responses align with the Customer Service department's objectives and report type."
+            ]
+        },
+        "errorHandling": {
+            "prompts": {
+                "invalidInput": "Your input doesn't seem relevant to the Customer Service department. Could you please provide a valid response?",
+                "retryPrompt": "Can you clarify your request? Let's ensure the report meets your needs."
+            }
+        }
+    },
+    "summary_format": {
+        "language": "Plain English",
+        "key_points": [
+            "Report Type",
+            "Visualization Type",
+            "Selected Filters",
+            "Date Range",
+            "Metrics",
+            "Comparisons",
+            "Additional Comments"
+        ]
+    }
+}

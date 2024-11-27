@@ -1,0 +1,369 @@
+{
+  "department": "Reinsurance",
+  "conversationFlow": {
+    "initiate": {
+      "prompt": "What type of reinsurance report would you like to generate?",
+      "errorHandling": "Ensure your selection aligns with reinsurance reporting requirements."
+    },
+    "reportType": {
+      "description": "Ask the user to specify the type of reinsurance report.",
+      "question": "What kind of report would you like? Options include Treaty Overview, Claims Report, Financial Summary, etc.",
+      "validations": {
+        "required": true,
+        "options": [
+          "Treaty Overview Report",
+          "Claims Report",
+          "Financial Summary Report",
+          "Premiums & Ceding Commissions Report",
+          "Loss Experience Report",
+          "Retrocessions Report",
+          "Portfolio Review Report",
+          "Risk Transfer Analysis Report",
+          "Reinsurance Recoverables Report",
+          "Market Analysis Report"
+        ],
+        "option_details": [
+          {
+            "name": "Treaty Overview Report",
+            "description": "Provides an overview of all reinsurance treaties including key terms and conditions.",
+            "required_fields": [
+              "Treaty Name",
+              "Effective Date",
+              "Expiration Date",
+              "Ceding Company",
+              "Reinsurer"
+            ],
+            "optional_fields": [
+              "Commission Structure",
+              "Retention Limits",
+              "Coverage Details"
+            ],
+            "metrics": ["Total Premiums", "Total Limits", "Number of Treaties"]
+          },
+          {
+            "name": "Claims Report",
+            "description": "Summarizes claims data related to reinsurance contracts.",
+            "required_fields": [
+              "Claim Number",
+              "Claim Amount",
+              "Date of Loss",
+              "Status",
+              "Treaty Reference"
+            ],
+            "optional_fields": [
+              "Incurred But Not Reported (IBNR)",
+              "Recoverable Amount",
+              "Adjuster Comments"
+            ],
+            "metrics": [
+              "Total Claims Filed",
+              "Average Claim Size",
+              "Claims Paid"
+            ]
+          },
+          {
+            "name": "Financial Summary Report",
+            "description": "Details the financial performance of reinsurance contracts.",
+            "required_fields": [
+              "Total Premiums",
+              "Total Claims Paid",
+              "Commission Expense",
+              "Net Profit"
+            ],
+            "optional_fields": ["Investment Income", "Expense Ratios"],
+            "metrics": ["Loss Ratio", "Expense Ratio", "Combined Ratio"]
+          },
+          {
+            "name": "Premiums & Ceding Commissions Report",
+            "description": "Tracks premiums ceded and commissions paid to reinsurers.",
+            "required_fields": [
+              "Ceding Company",
+              "Treaty Name",
+              "Premium Amount",
+              "Ceding Commission"
+            ],
+            "optional_fields": ["Payment Dates", "Commission Calculations"],
+            "metrics": [
+              "Total Ceded Premiums",
+              "Total Commissions",
+              "Net Premiums"
+            ]
+          },
+          {
+            "name": "Loss Experience Report",
+            "description": "Analyzes loss experience across reinsurance portfolios.",
+            "required_fields": [
+              "Portfolio Name",
+              "Loss Amount",
+              "Occurrence Date",
+              "Claim Type"
+            ],
+            "optional_fields": ["Severity Trends", "Frequency Trends"],
+            "metrics": ["Total Losses", "Average Severity", "Loss Trends"]
+          },
+          {
+            "name": "Retrocessions Report",
+            "description": "Summarizes retrocessional arrangements and recoveries.",
+            "required_fields": [
+              "Retrocession Agreement",
+              "Effective Date",
+              "Ceding Amount",
+              "Recoverables"
+            ],
+            "optional_fields": ["Counterparty", "Retention Limits"],
+            "metrics": [
+              "Total Retroceded Premiums",
+              "Recoveries Made",
+              "Retrocession Losses"
+            ]
+          },
+          {
+            "name": "Portfolio Review Report",
+            "description": "Evaluates the overall performance of reinsurance portfolios.",
+            "required_fields": [
+              "Portfolio Name",
+              "Premiums Written",
+              "Claims Incurred",
+              "Underwriting Results"
+            ],
+            "optional_fields": [
+              "Market Comparison",
+              "Strategic Recommendations"
+            ],
+            "metrics": [
+              "Total Portfolio Premiums",
+              "Claims Ratio",
+              "Profitability Index"
+            ]
+          },
+          {
+            "name": "Risk Transfer Analysis Report",
+            "description": "Analyzes risk transfer effectiveness of reinsurance structures.",
+            "required_fields": [
+              "Risk Description",
+              "Risk Transfer Amount",
+              "Retention Level",
+              "Treaty Name"
+            ],
+            "optional_fields": ["Analysis of Reinsurer's Financial Strength"],
+            "metrics": [
+              "Total Risks Transferred",
+              "Risk Retained",
+              "Impact on Capital"
+            ]
+          },
+          {
+            "name": "Reinsurance Recoverables Report",
+            "description": "Tracks recoverables from reinsurance contracts.",
+            "required_fields": [
+              "Claim Number",
+              "Recoverable Amount",
+              "Treaty Reference"
+            ],
+            "optional_fields": ["Status of Recoverables", "Payment Schedule"],
+            "metrics": [
+              "Total Recoverables",
+              "Pending Recoverables",
+              "Recovered Amounts"
+            ]
+          },
+          {
+            "name": "Market Analysis Report",
+            "description": "Evaluates market conditions affecting reinsurance strategies.",
+            "required_fields": [
+              "Market Segment",
+              "Analysis Period",
+              "Key Findings"
+            ],
+            "optional_fields": ["Competitor Comparison", "Emerging Trends"],
+            "metrics": ["Market Share", "Pricing Trends", "Capacity Analysis"]
+          }
+        ],
+        "errorMessage": "Please select a valid report type relevant to the Reinsurance department."
+      },
+      "responseValidation": "Ensure the selected report aligns with reinsurance objectives."
+    },
+    "timePeriod": {
+      "description": "Ask for the reporting period.",
+      "question": "For what time period do you need the report? Options include Daily, Weekly, Monthly, etc.",
+      "validations": {
+        "required": true,
+        "options": [
+          "Daily",
+          "Weekly",
+          "Monthly",
+          "Quarterly",
+          "Yearly",
+          "Custom Date Range"
+        ],
+        "customDateRangeHandling": "If 'Custom Date Range' is selected, ask for the start and end dates."
+      },
+      "responseValidation": "Check if the selected time period matches the requested report type."
+    },
+    "metrics": {
+      "description": "Ask the user which key metrics they would like to include.",
+      "question": "Which reinsurance metrics should be included in the report? Common metrics include Loss Ratio, Ceded Premiums, Claims Paid, etc.",
+      "validations": {
+        "required": true,
+        "options": [
+          "Loss Ratio",
+          "Ceded Premiums",
+          "Claims Paid",
+          "Combined Ratio",
+          "Retention Ratio",
+          "Total Recoverables",
+          "Premium Growth Rate",
+          "Expense Ratio",
+          "Risk Exposure",
+          "Investment Income"
+        ],
+        "errorMessage": "Please select at least one metric."
+      },
+      "responseValidation": "Verify that the selected metrics are appropriate for the reinsurance department's operations and report scope."
+    },
+
+    "visualization": {
+      "description": "Inquire about the visualization preference",
+      "question": "How would you like the data to be visualized? Bar chart, Pie chart, Line graph, or Table?",
+      "validations": {
+        "required": true,
+        "options": [
+          {
+            "name": "Bar Chart",
+            "description": "A chart that displays categorical data with rectangular bars.",
+            "subtypes": [
+              {
+                "type": "Vertical Bar",
+                "description": "Displays data in vertical bars to compare different categories."
+              },
+              {
+                "type": "Horizontal Bar",
+                "description": "Displays data in horizontal bars for comparative analysis."
+              },
+              {
+                "type": "Stacked Bar",
+                "description": "Displays the total of different sub-categories in a stacked format."
+              }
+            ],
+            "details": {
+              "2D_3D": ["2D", "3D"],
+              "colors": "Single or Multi-color options",
+              "animations": ["Static", "Animated"]
+            }
+          },
+          {
+            "name": "Pie Chart",
+            "description": "A circular chart divided into slices to illustrate numerical proportions.",
+            "subtypes": [
+              {
+                "type": "Standard Pie",
+                "description": "Displays proportional data as slices of a pie."
+              },
+              {
+                "type": "3D Pie",
+                "description": "Adds depth to the slices to create a 3D effect."
+              },
+              {
+                "type": "Donut Pie",
+                "description": "Similar to a pie chart but with a hole in the center."
+              }
+            ],
+            "details": {
+              "labels": ["Percentage", "Absolute Values"],
+              "interactivity": ["Drill Down", "Hover"],
+              "colors": "Single or Multi-color slices"
+            }
+          },
+          {
+            "name": "Line Graph",
+            "description": "Displays data points connected by a line, often used for trends over time.",
+            "subtypes": [
+              {
+                "type": "Standard Line",
+                "description": "Connects data points with straight lines."
+              },
+              {
+                "type": "Curved Line",
+                "description": "Connects data points with smooth, curved lines."
+              },
+              {
+                "type": "Area Line",
+                "description": "Fills the area beneath the line for cumulative data."
+              }
+            ],
+            "details": {
+              "2D_3D": ["2D", "3D"],
+              "trendline_options": ["Linear", "Moving Average"],
+              "markers": ["Points", "No Points"],
+              "animations": ["Static", "Animated"]
+            }
+          },
+          {
+            "name": "Scatter Plot",
+            "description": "A graph with points plotted to represent values for two variables.",
+            "subtypes": [
+              {
+                "type": "Standard Scatter",
+                "description": "Simple scatter plot with points representing two variables."
+              },
+              {
+                "type": "Bubble Chart",
+                "description": "Similar to scatter plot but adds size to the points to represent a third variable."
+              }
+            ],
+            "details": {
+              "axis_labels": ["X-Axis", "Y-Axis"],
+              "colors": "Single or Multi-color points",
+              "bubble_size": "Represents additional variable"
+            }
+          },
+          {
+            "name": "Heatmap",
+            "description": "A matrix representation where values are represented by color gradients.",
+            "subtypes": [
+              {
+                "type": "Standard Heatmap",
+                "description": "Displays data values with color intensity."
+              },
+              {
+                "type": "Clustered Heatmap",
+                "description": "Groups similar values into clusters."
+              }
+            ],
+            "details": {
+              "color_range": ["Low to High", "High to Low"],
+              "interactivity": ["Drill Down", "Hover"],
+              "grid_size": "Adjustable grid resolution"
+            }
+          }
+        ],
+        "errorMessage": "Please choose a valid visualization type."
+      },
+      "responseValidation": "Make sure the selected visualization is applicable to the report data."
+    },
+
+    "validationRules": {
+      "general": {
+        "rules": [
+          "Ensure that responses align with the Finance and Accounting department's domain and the report type requested."
+        ]
+      },
+      "errorHandling": {
+        "prompts": {
+          "invalidInput": "Your input doesn't seem relevant to Finance and Accounting. Could you please provide a valid response?",
+          "retryPrompt": "Can you clarify your request? Let's ensure the report meets your needs."
+        }
+      }
+    },
+    "summary_format": {
+      "language": "Plain English",
+      "key_points": [
+        "Report Type",
+        "Visualization Type",
+        "Date Range",
+        "Metrics",
+        "Additional Comments"
+      ]
+    }
+  }
+}

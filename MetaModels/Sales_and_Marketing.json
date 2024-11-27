@@ -1,0 +1,497 @@
+{
+    "department": "Sales And Marketing",
+    "conversationFlow": {
+        "initiate": {
+            "prompt": "What type of report are you looking to generate?",
+            "errorHandling": "Please make sure you are selecting the correct department related to sales and marketing report."
+        },
+        "reportType": {
+            "description": "Ask the user what type of report they would like to generate",
+            "question": "What type of Sales and Marketing report would you like? Options include Sales Performance, Lead Generation, Campaign Effectiveness, and more.",
+            "validations": {
+                "required": true,
+                "options": [
+                    "Sales Performance",
+                    "Lead Generation",
+                    "Campaign Effectiveness",
+                    "Customer Acquisition Cost",
+                    "Conversion Rate",
+                    "Customer Retention",
+                    "Market Share",
+                    "Ad Spend",
+                    "Return on Investment (ROI)"
+                ],
+                "option_details": [
+                    {
+                        "name": "Sales Performance",
+                        "description": "A report evaluating the overall sales activity, including revenue, sales volume, and individual performance.",
+                        "required_fields": [
+                            "Total Sales",
+                            "Sales Volume",
+                            "Revenue",
+                            "Date Range"
+                        ],
+                        "optional_fields": [
+                            "Sales by Product",
+                            "Sales by Region",
+                            "Sales by Salesperson",
+                            "Sales Targets"
+                        ],
+                        "metrics": [
+                            "Total Sales",
+                            "Revenue Growth",
+                            "Sales Target Achievement",
+                            "Sales by Product"
+                        ]
+                    },
+                    {
+                        "name": "Lead Generation",
+                        "description": "A report detailing the sources and quality of potential customer leads.",
+                        "required_fields": [
+                            "Total Leads",
+                            "Lead Source",
+                            "Lead Conversion Rate",
+                            "Date Range"
+                        ],
+                        "optional_fields": [
+                            "Cost per Lead",
+                            "Lead Quality Score",
+                            "Lead Status"
+                        ],
+                        "metrics": [
+                            "Total Leads Generated",
+                            "Lead Conversion Rate",
+                            "Cost per Lead",
+                            "Lead Quality"
+                        ]
+                    },
+                    {
+                        "name": "Campaign Effectiveness",
+                        "description": "A report measuring the success of marketing campaigns through various performance indicators.",
+                        "required_fields": [
+                            "Campaign Name",
+                            "Total Impressions",
+                            "Click-through Rate (CTR)",
+                            "Date Range"
+                        ],
+                        "optional_fields": [
+                            "Conversion Rate",
+                            "Cost per Conversion",
+                            "Customer Segmentation"
+                        ],
+                        "metrics": [
+                            "Total Impressions",
+                            "CTR",
+                            "Cost per Conversion",
+                            "Return on Ad Spend (ROAS)"
+                        ]
+                    },
+                    {
+                        "name": "Customer Acquisition Cost",
+                        "description": "A report analyzing the costs incurred to acquire new customers over a period.",
+                        "required_fields": [
+                            "Total Acquisition Cost",
+                            "Total Customers Acquired",
+                            "Date Range"
+                        ],
+                        "optional_fields": [
+                            "Acquisition Channels",
+                            "Customer Lifetime Value",
+                            "Return on Investment"
+                        ],
+                        "metrics": [
+                            "Customer Acquisition Cost",
+                            "Return on Investment (ROI)",
+                            "Customer Lifetime Value (CLV)"
+                        ]
+                    },
+                    {
+                        "name": "Conversion Rate",
+                        "description": "A report assessing the percentage of leads or visitors that were converted into customers.",
+                        "required_fields": [
+                            "Total Conversions",
+                            "Total Visitors/Leads",
+                            "Conversion Rate",
+                            "Date Range"
+                        ],
+                        "optional_fields": [
+                            "Conversion by Source",
+                            "Conversion by Channel",
+                            "Abandoned Leads"
+                        ],
+                        "metrics": [
+                            "Conversion Rate",
+                            "Leads Converted",
+                            "Visitor-to-Customer Rate",
+                            "Abandonment Rate"
+                        ]
+                    },
+                    {
+                        "name": "Customer Retention",
+                        "description": "A report analyzing the ability of the company to retain customers over a specified period.",
+                        "required_fields": [
+                            "Total Customers",
+                            "Retained Customers",
+                            "Churn Rate",
+                            "Date Range"
+                        ],
+                        "optional_fields": [
+                            "Retention by Product",
+                            "Retention by Region",
+                            "Customer Satisfaction"
+                        ],
+                        "metrics": [
+                            "Customer Retention Rate",
+                            "Churn Rate",
+                            "Customer Satisfaction Score",
+                            "Repeat Purchase Rate"
+                        ]
+                    },
+                    {
+                        "name": "Market Share",
+                        "description": "A report detailing the company’s share of the total market for its products or services.",
+                        "required_fields": [
+                            "Total Market Size",
+                            "Company Sales",
+                            "Competitor Sales",
+                            "Date Range"
+                        ],
+                        "optional_fields": [
+                            "Sales by Region",
+                            "Sales by Product",
+                            "Competitor Analysis"
+                        ],
+                        "metrics": [
+                            "Market Share",
+                            "Competitor Market Share",
+                            "Market Growth Rate",
+                            "Sales by Region"
+                        ]
+                    },
+                    {
+                        "name": "Ad Spend",
+                        "description": "A report detailing the amount of money spent on advertising and its effectiveness.",
+                        "required_fields": [
+                            "Total Ad Spend",
+                            "Ad Impressions",
+                            "Date Range"
+                        ],
+                        "optional_fields": [
+                            "Ad Spend by Channel",
+                            "Ad Click-through Rate",
+                            "Cost per Click"
+                        ],
+                        "metrics": [
+                            "Total Ad Spend",
+                            "Return on Ad Spend (ROAS)",
+                            "Cost per Click (CPC)",
+                            "Ad Conversion Rate"
+                        ]
+                    },
+                    {
+                        "name": "Return on Investment (ROI)",
+                        "description": "A report calculating the return on investment for sales and marketing initiatives.",
+                        "required_fields": [
+                            "Revenue",
+                            "Total Investment",
+                            "ROI",
+                            "Date Range"
+                        ],
+                        "optional_fields": [
+                            "ROI by Campaign",
+                            "ROI by Channel",
+                            "Net Profit"
+                        ],
+                        "metrics": [
+                            "ROI",
+                            "Revenue Generated",
+                            "Net Profit",
+                            "Cost per Lead"
+                        ]
+                    }
+                ],
+                "errorMessage": "Please select a valid report type."
+            },
+            "responseValidation": "Ensure that the selected report type fits within the Sales and Marketing domain."
+        },
+        "timePeriod": {
+            "description": "Ask for the reporting period",
+            "question": "For what time period do you need the report? You can select from Daily, Weekly, Monthly, etc.",
+            "validations": {
+                "required": true,
+                "options": [
+                    "Daily",
+                    "Weekly",
+                    "Monthly",
+                    "Quarterly",
+                    "Yearly",
+                    "Custom Date Range"
+                ],
+                "customDateRangeHandling": "If 'Custom Date Range' is selected, ask for the start and end dates."
+            },
+            "responseValidation": "Check if the selected time period matches the requested report type."
+        },
+        "visualizations": {
+            "description": "Ask the user which visualization format they prefer",
+            "question": "Which visualization format would you prefer for the Sales and Marketing report? Choose from bar charts, pie charts, heatmaps, and more.",
+            "validations": {
+                "required": true,
+                "options": [
+                    {
+                        "name": "Bar Chart",
+                        "description": "Displays sales or campaign performance across various categories.",
+                        "subtypes": [
+                            {
+                                "type": "Vertical Bar",
+                                "description": "Compares data across different categories using vertical bars."
+                            },
+                            {
+                                "type": "Horizontal Bar",
+                                "description": "Ideal for comparing campaign results or sales performance between competitors."
+                            },
+                            {
+                                "type": "Stacked Bar",
+                                "description": "Shows total sales or metrics while highlighting the contribution of sub-categories (e.g., region, product line)."
+                            }
+                        ],
+                        "details": {
+                            "2D_3D": [
+                                "2D",
+                                "3D"
+                            ],
+                            "colors": "Single or Multi-color options",
+                            "animations": [
+                                "Static",
+                                "Animated"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "Pie Chart",
+                        "description": "Visualizes market share, customer segmentation, or ad spend distribution.",
+                        "subtypes": [
+                            {
+                                "type": "Standard Pie",
+                                "description": "Represents proportions such as customer demographics or market segmentation."
+                            },
+                            {
+                                "type": "3D Pie",
+                                "description": "Adds depth to the data, providing a more engaging visual."
+                            },
+                            {
+                                "type": "Donut Pie",
+                                "description": "Similar to a pie chart but provides space for additional information in the center."
+                            }
+                        ],
+                        "details": {
+                            "labels": [
+                                "Percentage",
+                                "Absolute Values"
+                            ],
+                            "interactivity": [
+                                "Drill Down",
+                                "Hover"
+                            ],
+                            "colors": "Single or Multi-color slices"
+                        }
+                    },
+                    {
+                        "name": "Line Graph",
+                        "description": "Used for analyzing trends over time, such as monthly sales or customer growth.",
+                        "subtypes": [
+                            {
+                                "type": "Standard Line",
+                                "description": "Tracks metrics over time, such as campaign performance."
+                            },
+                            {
+                                "type": "Curved Line",
+                                "description": "Provides a smoother representation of data trends."
+                            },
+                            {
+                                "type": "Area Line",
+                                "description": "Shows the cumulative sales data or campaign budget over a period."
+                            }
+                        ],
+                        "details": {
+                            "2D_3D": [
+                                "2D",
+                                "3D"
+                            ],
+                            "trendline_options": [
+                                "Linear",
+                                "Exponential"
+                            ],
+                            "markers": [
+                                "Points",
+                                "No Points"
+                            ],
+                            "animations": [
+                                "Static",
+                                "Animated"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "Heatmap",
+                        "description": "Represents campaign reach or sales data in a matrix format using colors.",
+                        "subtypes": [
+                            {
+                                "type": "Standard Heatmap",
+                                "description": "Highlights regions or product categories with the highest engagement or sales."
+                            },
+                            {
+                                "type": "Clustered Heatmap",
+                                "description": "Groups similar performance indicators, such as customer acquisition costs or ad performance."
+                            }
+                        ],
+                        "details": {
+                            "color_range": [
+                                "Low to High",
+                                "High to Low"
+                            ],
+                            "interactivity": [
+                                "Drill Down",
+                                "Hover"
+                            ],
+                            "grid_size": "Adjustable grid resolution"
+                        }
+                    }
+                ],
+                "errorMessage": "Please choose a valid visualization type."
+            },
+            "responseValidation": "Ensure the selected visualization is appropriate for the report data."
+        },
+        "metrics": {
+            "description": "Ask the user which key metrics to include in the report",
+            "question": "Which key metrics should be included? Popular options include Revenue, Conversion Rate, and Customer Lifetime Value.",
+            "validations": {
+                "required": true,
+                "options": [
+                    "Revenue",
+                    "Conversion Rate",
+                    "Customer Acquisition Cost",
+                    "Customer Retention Rate",
+                    "Lead-to-Customer Ratio",
+                    "Ad Spend",
+                    "Market Share",
+                    "Return on Investment (ROI)",
+                    "Customer Lifetime Value (CLV)"
+                ],
+                "errorMessage": "Please select at least one metric."
+            },
+            "responseValidation": "Ensure the metrics align with the selected report type."
+        },
+        "filters": {
+            "description": "Ask if the user would like to apply any filters",
+            "question": "Would you like to apply filters? You can filter by Region, Campaign, Salesperson, Customer Type, etc.",
+            "validations": {
+                "required": false,
+                "options": {
+                    "byRegion": [
+                        "North America",
+                        "Europe",
+                        "Asia-Pacific",
+                        "Middle East",
+                        "Africa"
+                    ],
+                    "byCampaign": [
+                        "Campaign A",
+                        "Campaign B",
+                        "Campaign C"
+                    ],
+                    "bySalesperson": [
+                        "John Doe",
+                        "Jane Smith",
+                        "Alice Brown"
+                    ],
+                    "byCustomerType": [
+                        "New",
+                        "Returning",
+                        "Prospective"
+                    ],
+                    "byProductLine": [
+                        "Product A",
+                        "Product B",
+                        "Product C"
+                    ]
+                },
+                "errorMessage": "Please provide valid filter criteria."
+            },
+            "responseValidation": "Ensure the filters are applicable to Sales and Marketing data."
+        },
+        "subReports": {
+            "description": "Check if any sub-reports are required",
+            "question": "Would you like detailed breakdowns or sub-reports? (e.g., Region-wise Sales, Campaign Performance by Product Line)",
+            "validations": {
+                "required": false,
+                "options": [
+                    "Region-wise Sales",
+                    "Salesperson Performance",
+                    "Campaign Performance by Product Line",
+                    "Monthly Trends",
+                    "Customer Type Breakdown"
+                ],
+                "errorMessage": "Please select a valid sub-report type."
+            },
+            "responseValidation": "Ensure the sub-report is relevant to the main report."
+        },
+        "currency": {
+            "description": "Ask for the preferred currency format",
+            "question": "Which currency format would you like to use? (USD, EUR, INR, etc.)",
+            "validations": {
+                "required": true,
+                "options": [
+                    "USD",
+                    "EUR",
+                    "INR",
+                    "GBP",
+                    "JPY",
+                    "CNY",
+                    "Custom"
+                ],
+                "errorMessage": "Please select a valid currency format."
+            },
+            "responseValidation": "Verify if the currency is appropriate for the region or data source."
+        },
+        "comparisons": {
+            "description": "Ask if comparisons are needed",
+            "question": "Would you like to include comparisons such as Year-over-Year or Campaign Performance?",
+            "validations": {
+                "required": false,
+                "options": [
+                    "Year-over-Year",
+                    "Month-over-Month",
+                    "Campaign vs Campaign",
+                    "Quarterly Sales",
+                    "Region vs Region"
+                ],
+                "errorMessage": "Please select a valid comparison option."
+            },
+            "responseValidation": "Ensure the comparison is appropriate for the metrics and time period."
+        }
+    },
+    "validationRules": {
+        "general": {
+            "rules": [
+                "Ensure that responses are aligned with the Sales and Marketing domain and the report type requested."
+            ]
+        },
+        "errorHandling": {
+            "prompts": {
+                "invalidInput": "Your input doesn't seem relevant to Sales and Marketing. Please provide a valid response.",
+                "retryPrompt": "Can you clarify your request? Let's ensure the report fits your needs."
+            }
+        }
+    },
+    "summary_format": {
+        "language": "Plain English",
+        "key_points": [
+            "Report Type",
+            "Visualization Type",
+            "Selected Filters",
+            "Date Range",
+            "Metrics",
+            "Additional Comments"
+        ]
+    }
+}

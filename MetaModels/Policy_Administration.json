@@ -1,0 +1,431 @@
+{
+    "department": "Policy Administration",
+    "conversationFlow": {
+        "initiate": {
+            "prompt": "What type of report are you looking to generate?",
+            "errorHandling": "Please make sure you are selecting the correct department related to policy administration reports."
+        },
+        "report_type": {
+            "description": "Ask the user which type of report is required",
+            "question": "What type of report would you like to generate for Policy Administration? Common reports include Policy Performance, Policy Renewals, and Claim Ratios.",
+            "validations": {
+                "required": true,
+                "options": [
+                    "Policy Performance",
+                    "Policy Renewals",
+                    "Claim Ratios",
+                    "Policy Lapse",
+                    "New Policies Issued",
+                    "Claim Settlements"
+                ],
+                "option_details": [
+                    {
+                        "name": "Policy Performance",
+                        "description": "A report summarizing the overall performance of insurance policies, including metrics such as claims, premiums, and profit margins.",
+                        "required_fields": [
+                            "Policy Number",
+                            "Premium Collected",
+                            "Claims Paid",
+                            "Profit Margin",
+                            "Date Range"
+                        ],
+                        "optional_fields": [
+                            "Policy Type",
+                            "Region",
+                            "Agent Details",
+                            "Renewal Status"
+                        ],
+                        "metrics": [
+                            "Premium Collected",
+                            "Claims Paid",
+                            "Profit Margin",
+                            "Number of Active Policies"
+                        ]
+                    },
+                    {
+                        "name": "Policy Renewals",
+                        "description": "A report detailing the number of policies renewed over a specific period and any factors impacting renewals.",
+                        "required_fields": [
+                            "Policy Number",
+                            "Renewal Date",
+                            "Premium Amount",
+                            "Renewal Status",
+                            "Date Range"
+                        ],
+                        "optional_fields": [
+                            "Policyholder Details",
+                            "Region",
+                            "Policy Type",
+                            "Agent Details"
+                        ],
+                        "metrics": [
+                            "Number of Renewals",
+                            "Renewal Rate",
+                            "Premium Collected on Renewal"
+                        ]
+                    },
+                    {
+                        "name": "Claim Ratios",
+                        "description": "A report that calculates the ratio of claims paid versus premiums collected, highlighting the financial impact of claims on the company.",
+                        "required_fields": [
+                            "Policy Number",
+                            "Claims Paid",
+                            "Premium Collected",
+                            "Date Range"
+                        ],
+                        "optional_fields": [
+                            "Policy Type",
+                            "Claim Type",
+                            "Region",
+                            "Policyholder Details"
+                        ],
+                        "metrics": [
+                            "Claims Paid",
+                            "Claim Ratio",
+                            "Premium vs Claims"
+                        ]
+                    },
+                    {
+                        "name": "Policy Lapse",
+                        "description": "A report that tracks policies that have lapsed due to non-payment or non-renewal.",
+                        "required_fields": [
+                            "Policy Number",
+                            "Lapse Date",
+                            "Premium Due",
+                            "Reason for Lapse",
+                            "Date Range"
+                        ],
+                        "optional_fields": [
+                            "Policyholder Details",
+                            "Policy Type",
+                            "Agent Details",
+                            "Region"
+                        ],
+                        "metrics": [
+                            "Number of Lapsed Policies",
+                            "Premium Loss Due to Lapse",
+                            "Lapse Rate"
+                        ]
+                    },
+                    {
+                        "name": "New Policies Issued",
+                        "description": "A report that tracks the number of new policies issued during a specific period.",
+                        "required_fields": [
+                            "Policy Number",
+                            "Policyholder Details",
+                            "Premium Amount",
+                            "Issue Date",
+                            "Date Range"
+                        ],
+                        "optional_fields": [
+                            "Policy Type",
+                            "Agent Details",
+                            "Region"
+                        ],
+                        "metrics": [
+                            "Number of New Policies",
+                            "Total Premium from New Policies",
+                            "Region-Wise New Policies"
+                        ]
+                    },
+                    {
+                        "name": "Claim Settlements",
+                        "description": "A report summarizing the number of claims settled and the total amount paid in claims over a specific period.",
+                        "required_fields": [
+                            "Claim Number",
+                            "Policy Number",
+                            "Claim Amount",
+                            "Settlement Date",
+                            "Date Range"
+                        ],
+                        "optional_fields": [
+                            "Policyholder Details",
+                            "Claim Type",
+                            "Region",
+                            "Agent Details"
+                        ],
+                        "metrics": [
+                            "Number of Claims Settled",
+                            "Total Claims Paid",
+                            "Average Claim Settlement Time"
+                        ]
+                    }
+                ],
+                "errorMessage": "Please select a valid report type."
+            },
+            "responseValidation": "Ensure that the selected report type is relevant to Policy Administration."
+        },
+        "timePeriod": {
+            "description": "Ask for the reporting period",
+            "question": "For what time period do you need the report? You can select from Daily, Weekly, Monthly, etc.",
+            "validations": {
+                "required": true,
+                "options": [
+                    "Daily",
+                    "Weekly",
+                    "Monthly",
+                    "Quarterly",
+                    "Yearly",
+                    "Custom Date Range"
+                ],
+                "customDateRangeHandling": "If 'Custom Date Range' is selected, ask for the start and end dates."
+            },
+            "responseValidation": "Check if the selected time period matches the requested report type."
+        },
+        "visualization": {
+            "description": "Ask the user which type of visualization they'd like to use",
+            "question": "Which visualization format would you prefer for this report?",
+            "validations": {
+                "required": true,
+                "options": [
+                    {
+                        "name": "Bar Chart",
+                        "description": "Displays data with rectangular bars for comparison.",
+                        "subtypes": [
+                            {
+                                "type": "Vertical Bar",
+                                "description": "Displays data in vertical bars for different categories."
+                            },
+                            {
+                                "type": "Horizontal Bar",
+                                "description": "Displays data in horizontal bars for comparative analysis."
+                            },
+                            {
+                                "type": "Stacked Bar",
+                                "description": "Shows the total of different sub-categories in stacked format."
+                            }
+                        ],
+                        "details": {
+                            "2D_3D": [
+                                "2D",
+                                "3D"
+                            ],
+                            "colors": "Single or Multi-color options",
+                            "animations": [
+                                "Static",
+                                "Animated"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "Pie Chart",
+                        "description": "A circular chart divided into slices to represent numerical proportions.",
+                        "subtypes": [
+                            {
+                                "type": "Standard Pie",
+                                "description": "Displays proportional data as pie slices."
+                            },
+                            {
+                                "type": "Donut Pie",
+                                "description": "Similar to pie but with a hole in the center."
+                            }
+                        ],
+                        "details": {
+                            "labels": [
+                                "Percentage",
+                                "Absolute Values"
+                            ],
+                            "colors": "Single or Multi-color slices",
+                            "interactivity": [
+                                "Drill Down",
+                                "Hover"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "Line Graph",
+                        "description": "Shows trends over time with connected data points.",
+                        "subtypes": [
+                            {
+                                "type": "Standard Line",
+                                "description": "Connects points with straight lines."
+                            },
+                            {
+                                "type": "Curved Line",
+                                "description": "Connects points with smooth curves."
+                            }
+                        ],
+                        "details": {
+                            "2D_3D": [
+                                "2D",
+                                "3D"
+                            ],
+                            "trendline_options": [
+                                "Linear",
+                                "Moving Average"
+                            ],
+                            "markers": [
+                                "Points",
+                                "No Points"
+                            ],
+                            "animations": [
+                                "Static",
+                                "Animated"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "Heatmap",
+                        "description": "Displays data with color gradients for easy visualization.",
+                        "subtypes": [
+                            {
+                                "type": "Standard Heatmap",
+                                "description": "Uses color to represent data intensity."
+                            }
+                        ],
+                        "details": {
+                            "color_range": [
+                                "Low to High",
+                                "High to Low"
+                            ],
+                            "interactivity": [
+                                "Drill Down",
+                                "Hover"
+                            ],
+                            "grid_size": "Adjustable grid resolution"
+                        }
+                    }
+                ],
+                "errorMessage": "Please choose a valid visualization type."
+            },
+            "responseValidation": "Ensure the selected visualization matches the report data."
+        },
+        "metrics": {
+            "description": "Ask the user which key metrics should be included",
+            "question": "Which key metrics should be included in the report? Common metrics include Premium Collected, Policies in Force, etc.",
+            "validations": {
+                "required": true,
+                "options": [
+                    "Premium Collected",
+                    "Policies in Force",
+                    "Claims Filed",
+                    "Claims Settled",
+                    "Policy Renewals",
+                    "New Policies",
+                    "Policy Lapse Rate",
+                    "Claim Approval Time",
+                    "Customer Retention Rate"
+                ],
+                "errorMessage": "Please select at least one metric."
+            },
+            "responseValidation": "Ensure that the selected metrics are relevant for the chosen report type."
+        },
+        "filters": {
+            "description": "Ask the user if they want to apply any filters",
+            "question": "Would you like to apply any filters? You can filter by Policy Type, Region, Customer Segment, etc.",
+            "validations": {
+                "required": false,
+                "options": {
+                    "byPolicyType": [
+                        "Term Insurance",
+                        "Health Insurance",
+                        "Vehicle Insurance",
+                        "Life Insurance",
+                        "Home Insurance"
+                    ],
+                    "byRegion": [
+                        "North America",
+                        "Europe",
+                        "Asia-Pacific",
+                        "Middle East",
+                        "Africa"
+                    ],
+                    "byCustomerSegment": [
+                        "Retail",
+                        "Corporate",
+                        "SMEs",
+                        "Government"
+                    ],
+                    "byClaimStatus": [
+                        "Approved",
+                        "Rejected",
+                        "Pending"
+                    ],
+                    "byPaymentStatus": [
+                        "Paid",
+                        "Pending",
+                        "Overdue"
+                    ]
+                },
+                "errorMessage": "Please provide valid filter criteria."
+            },
+            "responseValidation": "Ensure that the filters are applicable to Policy Administration data."
+        },
+        "subReports": {
+            "description": "Ask if any sub-reports are needed",
+            "question": "Would you like to generate any sub-reports? (e.g., Policy Type Breakdown, Region-wise Breakdown)",
+            "validations": {
+                "required": false,
+                "options": [
+                    "Policy Type Breakdown",
+                    "Region-wise Breakdown",
+                    "Claim Status Breakdown",
+                    "Monthly Policy Renewals",
+                    "Customer Segment Breakdown"
+                ],
+                "errorMessage": "Please select a valid sub-report type."
+            },
+            "responseValidation": "Ensure the sub-report matches the main report data."
+        },
+        "currency": {
+            "description": "Ask for the preferred currency format",
+            "question": "Which currency format would you like to use? (USD, EUR, INR, etc.)",
+            "validations": {
+                "required": true,
+                "options": [
+                    "USD",
+                    "EUR",
+                    "INR",
+                    "GBP",
+                    "JPY",
+                    "CNY",
+                    "Custom"
+                ],
+                "errorMessage": "Please select a valid currency format."
+            },
+            "responseValidation": "Verify if the currency is appropriate for the region or data source."
+        },
+        "comparisons": {
+            "description": "Ask if comparisons are needed",
+            "question": "Would you like to include any comparisons? (e.g., Year-over-Year, Month-over-Month, etc.)",
+            "validations": {
+                "required": false,
+                "options": [
+                    "Year-over-Year Comparison",
+                    "Month-over-Month Comparison",
+                    "Claim Approvals vs Rejections",
+                    "Policy Renewals vs Lapses",
+                    "Premium Collected vs Claims Settled"
+                ],
+                "errorMessage": "Please select a valid comparison option."
+            },
+            "responseValidation": "Ensure the comparison makes sense for the selected metrics."
+        }
+    },
+    "validationRules": {
+        "general": {
+            "rules": [
+                "Ensure that responses align with the Policy Administration domain and the selected report type."
+            ]
+        },
+        "errorHandling": {
+            "prompts": {
+                "invalidInput": "Your input doesn't seem relevant to Policy Administration. Could you please provide a valid response?",
+                "retryPrompt": "Can you clarify your request? Let's ensure the report meets your needs."
+            }
+        }
+    },
+    "summary_format": {
+        "language": "Plain English",
+        "key_points": [
+            "Report Type",
+            "Visualization Type",
+            "Selected Filters",
+            "Date Range",
+            "Metrics",
+            "Comparisons",
+            "Sub-Reports",
+            "Additional Comments"
+        ]
+    }
+}
