@@ -8,6 +8,8 @@ const bodyParser = require("body-parser");
 
 const userRoutes = require("./routes/userRoutes.js");
 const chatLogRoutes = require("./routes/ChatLogRoutes.js");
+const metaModelRoutes = require("./routes/MetaModelRoutes.js");
+const reportRequestRoutes = require("./routes/ReportRequestRoutes.js");
 
 const app = express();
 
@@ -65,6 +67,8 @@ app.use(
 
 app.use("/api", userRoutes);
 app.use('/api',chatLogRoutes);
+app.use("/api",reportRequestRoutes);
+app.use("/api",metaModelRoutes);
 
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);

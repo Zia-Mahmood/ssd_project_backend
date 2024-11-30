@@ -1,5 +1,5 @@
 const express = require("express");
-const multer = require("multer");
+//const multer = require("multer");
 const {
   getMetaModelByDepartment,
   updateMetaModelByDepartment,
@@ -9,15 +9,15 @@ const {
 const router = express.Router();
 
 // Configure multer for file uploads
-const upload = multer({ dest: "uploads/" });
+//const upload = multer({ dest: "uploads/" });
 
 // Get a specific meta model by department name
-router.get("/:department", getMetaModelByDepartment);
+router.get("/metaModel/:department", getMetaModelByDepartment);
 
 // Update model data directly by department name
-router.put("/:department", updateMetaModelByDepartment);
+router.put("/metaModel/:department", updateMetaModelByDepartment);
 
 // Upload a file to update model data by department name
-router.post("/:department/upload", upload.single("file"), uploadMetaModelFile);
+//router.post("/:department/upload", upload.single("file"), uploadMetaModelFile);
 
 module.exports = router;

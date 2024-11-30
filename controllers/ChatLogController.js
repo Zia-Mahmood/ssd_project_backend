@@ -2,9 +2,10 @@ const dotenv = require("dotenv");
 const MetaModel = require("../models/MetaModelSchema");
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 const ChatLog = require("../models/ChatLogSchema"); // Adjust the path if needed
+const ReportRequest = require("../models/ReportRequestSchema");
 dotenv.config({ path: "./config.env" });
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+
+
 // Create a new chat log
 const createChatLog = async (req, res) => {
   const { logName,userEmail, metaModelName } = req.body;
@@ -102,7 +103,9 @@ const handleUserMessage = async (req, res) => {
     //console.log("Transformed History:", history);
 
     // Start a chat session with the transformed history
-    cosole.log(history);
+    
+    const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
     const chat = model.startChat({ history:history });
     console.log("Chat started");
     let result = await chat.sendMessage(userMessage);
@@ -152,9 +155,35 @@ const handlePrevChats = async (req,res) => {
 
     // Find all chat logs for the specified userEmail
     const previousChats = await ChatLog.find({ userEmail:userEmail },{logName:1,userEmail:1,metaModelName:1});
-    console.log(previousChats);
-    // Return the chat logs in the response
-    res.status(200).json(previousChats);
+    // Iterate over each chat log and check if it exists in the ReportRequest collection
+    const chatsWithReportDetails = await Promise.all(
+      previousChats.map(async (chat) => {
+        // Check if the chat log exists in the ReportRequest collection
+        const report = await ReportRequest.findOne({ conversationHistory: chat._id });
+
+        // If report is found, append status, summary, and latest comment
+        if (report) {
+          const latestComment = report.comments.length > 0 ? report.comments[report.comments.length - 1] : "None";
+          return {
+            ...chat.toObject(), // Convert mongoose document to plain object
+            status: report.status,
+            summary: report.summary || "N/A", // Default to "N/A" if no summary exists
+            latestComment: latestComment
+          };
+        } else {
+          // If no report is found, append default values
+          return {
+            ...chat.toObject(),
+            status: "not sent",
+            summary: "N/A",
+            latestComment: "None"
+          };
+        }
+      })
+    );
+
+    // Return the updated chats with report details
+    res.status(200).json(chatsWithReportDetails);
   } catch (error) {
     console.error("Error fetching previous chats:", error);
     res.status(500).json({ error: "Failed to retrieve previous chats" });

@@ -1,12 +1,14 @@
-const MetaModel = require("./models/MetaModel"); // Adjust path as needed
+const MetaModel = require("../models/MetaModelSchema"); // Adjust path as needed
 const fs = require("fs");
 
 // Get a specific meta model by department name
 const getMetaModelByDepartment = async (req, res) => {
   try {
+    console.log(req.params);
     const metaModel = await MetaModel.findOne({
       modelName: req.params.department,
-    }).populate("uploadedBy");
+    },{modelData: 1});
+    console.log(metaModel);
     if (!metaModel) {
       return res.status(404).json({ message: "Meta model not found" });
     }
@@ -18,9 +20,15 @@ const getMetaModelByDepartment = async (req, res) => {
 
 // Update model data directly by department name
 const updateMetaModelByDepartment = async (req, res) => {
-  const { modelData } = req.body;
-
+  const { metamodel } = req.body;
+  console.log(metamodel,req.body);
   try {
+    let modelData;
+    try {
+      modelData = JSON.parse(metamodel);
+    } catch (err) {
+      return res.status(400).json({ message: "Invalid JSON format for metamodel" });
+    }
     const metaModel = await MetaModel.findOne({
       modelName: req.params.department,
     });
@@ -28,7 +36,12 @@ const updateMetaModelByDepartment = async (req, res) => {
       return res.status(404).json({ message: "Meta model not found" });
     }
 
-    if (modelData) metaModel.modelData = modelData; // Update model data
+    // Ensure modelData exists before updating
+    if (modelData) {
+      metaModel.modelData = modelData; // Update the modelData
+    } else {
+      return res.status(400).json({ message: "Model data is required for update" });
+    }
 
     metaModel.updatedAt = Date.now(); // Update the timestamp
     await metaModel.save();

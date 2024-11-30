@@ -1,5 +1,5 @@
 {
-  "department": "Human Resources",
+  "department": "Human Resources (HR)",
   "conversationFlow": {
     "initiate": {
       "prompt": "What type of HR report or service are you looking for?",

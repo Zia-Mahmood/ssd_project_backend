@@ -1,10 +1,9 @@
 const mongoose = require("mongoose");
 
 const reportRequestSchema = new mongoose.Schema({
-  requestId: { type: mongoose.Schema.Types.ObjectId, auto: true },
+  // requestId: { type: mongoose.Schema.Types.ObjectId, auto: true },
   submittedBy: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
+    type: String,
     required: true,
   },
   department: { type: String, required: true },
@@ -15,17 +14,15 @@ const reportRequestSchema = new mongoose.Schema({
   reportType: { type: String, required: true },
   visualization: {
     type: String,
-    enum: ["bar", "pie", "line"],
-    default: "bar",
+    required: true
   },
-  filters: { type: mongoose.Schema.Types.Mixed },
-  subReports: { type: [String], default: [] },
+  timeRange:{ type: String, required: true },
   summary: { type: String },
   comments: { type: [String], default: [] },
   submittedAt: { type: Date, default: Date.now },
   status: {
     type: String,
-    enum: ["pending", "processed","not sent","resubmit"],
+    enum: ["pending", "Accepted","not sent","resubmit","rejected"],
     default: "not sent",
   },
 });
