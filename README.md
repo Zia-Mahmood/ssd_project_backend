@@ -3,7 +3,7 @@
 ## Overview
 This repository contains the backend implementation for the SSD project. The backend is built using **Node.js** and **Express.js**, with **MongoDB** as the database. It serves as the backbone for managing chat conversations, report requests, and user interactions with meta-models.
 
-The backend provides RESTful APIs that integrate seamlessly with the [frontend application](https://github.com/kritikajoshi815/SSD-Frontend). It ensures efficient communication, data persistence, and validation for the entire application workflow.
+The backend provides RESTful APIs that integrate seamlessly with the [frontend application](https://github.com/Zia-Mahmood/SSD_Project_Frontend). It ensures efficient communication, data persistence, and validation for the entire application workflow.
 
 ---
 
@@ -100,7 +100,7 @@ The backend can be hosted using services like **Heroku**, **Render**, or **AWS**
 ---
 
 ## Integration with Frontend
-The backend is integrated with the frontend hosted on **Netlify**. The frontend repository can be found [here](https://github.com/kritikajoshi815/SSD-Frontend).
+The backend is integrated with the frontend hosted on **Netlify**. The frontend repository can be found [here](https://github.com/Zia-Mahmood/SSD_Project_Frontend).
 
 For now, the dummy hosted URL for the frontend is:
 [https://dummy-netlify-link.com](https://dummy-netlify-link.com)
