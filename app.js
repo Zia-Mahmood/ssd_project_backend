@@ -57,7 +57,7 @@ app.use(
     store: mongoDBstore,
     cookie: {
       maxAge: MAX_AGE,
-      secure: false, // Only set to true in production
+      secure: true, // Only set to true in production
     },
     rolling: true, // Reset session maxAge on each request
     resave: false,
