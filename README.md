@@ -112,12 +112,6 @@ For now, the dummy hosted URL for the frontend is:
 - **Link for Demo Video:**
   [https://drive.google.com/file/d/17QnG2BscQNpWWOzM0lhbtEV8y7t4x46V/view?usp=sharing](https://drive.google.com/file/d/17QnG2BscQNpWWOzM0lhbtEV8y7t4x46V/view?usp=sharing)
 
-### How to Add the Video
-1. Record a demo using screen-recording software (e.g., OBS Studio, Camtasia).
-2. Upload the recorded video to **Google Drive**.
-3. Set the sharing permissions to "Anyone with the link can view."
-4. Update the README with the video link.
-
 ---
 
 ## Disclaimer
